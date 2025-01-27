@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /build/
+
+Sitemap: https://esp-rhone-alpes.fr/sitemap.xml
