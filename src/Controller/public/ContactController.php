@@ -6,13 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-final class HomeController extends AbstractController
+final class ContactController extends AbstractController
 {
-    #[Route('/', name: 'app_home', options: ['sitemap' => ['priority' => 1]])]
+    #[Route('/contact', name: 'app_contact', options: ['sitemap' => ['priority' => 0.8]])]
     public function index(): Response
     {
-        return $this->render('public/home/index.html.twig', [
-            'controller_name' => 'HomeController',
+        return $this->render('public/contact/index.html.twig', [
+            'controller_name' => 'ContactController',
         ]);
     }
 }
