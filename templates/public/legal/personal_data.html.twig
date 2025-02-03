@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block robots %}noindex, nofollow{% endblock %}
+{% block title %}Données Personnelles{% endblock %}
+{% block description %}Découvrez notre politique de gestion des données personnelles : collecte, traitement, protection et vos droits en matière de confidentialité.{% endblock %}
+{% block url %}{{ path('app_personal_data') }}{% endblock %}
+
+{% block ogTitle %}ESP - Données Personnelles{% endblock %}
+{% block ogUrl %}https://esp-rhone-alpes.fr/donnees-personnelles{% endblock %}
+{% block ogImage %}{{ asset('medias/site/banniere.webp') }}{% endblock %}
+{% block ogImageAlt %}ESP Débarras et Nettoyage{% endblock %}
+{% block ogDescription %}Découvrez notre politique de gestion des données personnelles : collecte, traitement, protection et vos droits en matière de confidentialité.{% endblock %}
+
+
+{% block body %}
+    <section class="bg-white py-12 sm:py-16">
+        <div class="mx-auto max-w-2xl text-center px-6 lg:px-8">
+            <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Données personnelles</h1>
+        </div>
+        <div class="mt-10 sm:mt-16 max-w-4xl mx-auto px-6 lg:px-8 space-y-10">
+            <div class="space-y-3">
+                <p class="text-gray-600">Chez ESP Débarras et Nettoyage, nous apportons une attention particulière au respect de votre vie privée.</p>
+                <p class="text-gray-600">Nous vous remercions d’utiliser nos services et notre site web. Nous prenons le respect de votre vie privée au sérieux.</p>
+                <p class="text-gray-600">Cette charte de confidentialité concerne toute personne physique partageant ses données personnelles directement ou indirectement avec ESP Débarras et Nettoyage en visitant notre site web.</p>
+                <p class="text-gray-600">ESP Débarras et Nettoyage est une société établie en France. En tant que tel, nous adhérons à la nLPD (nouvelle Loi sur la Protection des Données).</p>
+                <p class="text-gray-600">Notre siège social est situé au <span class="underline underline-offset-4 decoration-dotted">22 Imp. des Ecorees, 74150 Sales, France</span></p>
+                <p class="text-gray-600">Vous pouvez nous faire part de vos questions en matière de protection des données à l’adresse suivante : contact@esp-rhone-alpes.fr</p>
+                <p class="text-gray-600">Cette charte de confidentialité détaille les types de données personnelles qui sont susceptibles d’être traitées et dans leur finalité.</p>
+            </div>
+            <div class="space-y-5">
+                <h2 class="font-semibold text-lg">Périmètre de la charte de confidentialité</h2>
+                <div class="space-y-3">
+                    <p class="text-gray-600">Veuillez noter que cette charte de confidentialité concerne le traitement des données personnelles dont ESP Débarras et Nettoyage est le responsable de traitement.</p>
+                    <p class="text-gray-600">Cette Charte de confidentialité ne concerne aucun traitement de données personnelles que ESP Débarras et Nettoyage peut effectuer en tant que sous-traitant découlant de votre utilisation de nos services.</p>
+                    <p class="text-gray-600">Pour obtenir plus d’informations sur la façon dont nos services peuvent être utilisés pour faciliter vos traitements de données personnelles, et sur les responsabilités et les engagements de ESP Débarras et Nettoyage en relation avec ceux-ci, veuillez-vous référer aux conditions applicables.</p>
+                    <p class="text-gray-600">Nous appliquons la nLPD (nouvelle Loi sur la Protection des Données) pour l’ensemble de nos procédures.</p>
+                </div>
+            </div>
+            <div class="space-y-5">
+                <h2 class="font-semibold text-lg">Données personnelles traitées</h2>
+                <div class="space-y-3">
+                    <p class="text-gray-600">Les données personnelles désignent les données qui vous identifient en tant que personne physique. Nous pouvons être amenés à traiter les types de données personnelles suivants vous concernant :</p>
+                    <p class="text-gray-600">Vos coordonnées peuvent inclure votre nom, l’adresse courriel et le numéro de téléphone.</p>
+                    <p class="text-gray-600">Informations utilisateur, par exemple, si vous vous connectez à notre service ou visitez nos sites internet. Ces informations peuvent comprendre le numéro IP, le type de périphérique et le navigateur, fuseau horaire, situation géographique, ainsi que vos intérêts et préférences, des informations sur la façon dont vous interagissez avec nos services, par exemple sur les fonctionnalités utilisées et les boutons cliqués.</p>
+                </div>
+            </div>
+            <div class="space-y-5">
+                <h2 class="font-semibold text-lg">Finalité du traitement des données</h2>
+                <div class="space-y-3">
+                    <p class="text-gray-600">Nous pouvons être amenés à traiter vos données personnelles pour les finalités suivantes :</p>
+                    <div class="ml-6 space-y-3">
+                        <p class="text-gray-600">• Fournir nos services conformément aux conditions applicables</p>
+                        <p class="text-gray-600">• Administrer la relation d’affaires avec vous et le client de FG FIDUCIAIRE GENEVOISE SA que vous représentez</p>
+                        <p class="text-gray-600">• Développer et améliorer nos services</p>
+                    </div>
+                    <p class="text-gray-600">Afin de fournir des informations et des offres aux clients de ESP Débarras et Nettoyage actuels ou potentiels sur notre solution par des parties tierces sélectionnées.</p>
+                    <p class="text-gray-600">Tout matériel de marketing distribué à l’aide de vos données personnelles vous est envoyé en tant que personne morale représentant un client actuel ou potentiel de ESP Débarras et Nettoyage et non à vous en tant que personne privée.</p>
+                </div>
+            </div>
+            <div class="space-y-5">
+                <h2 class="font-semibold text-lg">Partage avec des tiers</h2>
+                <div class="space-y-3">
+                    <p class="text-gray-600"><span class="underline-offset-4 underline">Google Analytics :</span> Permet d’analyser le trafic sur le site web https://www.esp-rhone-alpes.fr/</p>
+                    <p class="text-gray-600"><span class="underline-offset-4 underline">Google Tag Manager :</span> Gestionnaire de balises qui permet aux responsables marketing d’ajouter facilement des balises (Analytics, de remarketing, etc.) sur leur site Web.</p>
+                </div>
+            </div>
+            <div class="space-y-5">
+                <h2 class="font-semibold text-lg">Vos droits</h2>
+                <div class="space-y-3">
+                    <p class="text-gray-600">Nous avons pour obligation de traiter des éléments personnels précis, pertinents et nécessaires tout en tenant compte de nos finalités légitimes. Vous avez le droit de contrôler ce droit.</p>
+                    <p class="text-gray-600">Pour mettre à jour les données personnelles que nous traitons vous concernant, veuillez nous contacter sur contact@esp-rhone-alpes.fr</p>
+                    <p class="text-gray-600">Pour recevoir gratuitement un extrait de données personnelles que nous traitons vous concernant, vous pouvez nous envoyer une lettre recommandée à l’adresse suivante : <span class="underline decoration-dotted underline-offset-4">ESP Débarras Nettoyage, 22 Imp. des Ecorees, 74150 Sales, France</span>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

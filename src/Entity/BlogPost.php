@@ -39,6 +39,9 @@ class BlogPost
     #[ORM\JoinColumn(nullable: false)]
     private ?BlogCategory $category = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $altMainPhoto = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -136,6 +139,18 @@ class BlogPost
     public function setCategory(?BlogCategory $category): static
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function getAltMainPhoto(): ?string
+    {
+        return $this->altMainPhoto;
+    }
+
+    public function setAltMainPhoto(string $altMainPhoto): static
+    {
+        $this->altMainPhoto = $altMainPhoto;
 
         return $this;
     }

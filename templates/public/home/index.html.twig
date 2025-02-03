@@ -1,10 +1,357 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block robots %}index, follow{% endblock %}
+{% block title %}Entreprise de Débarras et Nettoyage express{% endblock %}
+{% block description %}Entreprise experte en débarras, nettoyage et du syndrome de Diogène. Services rapides pour particuliers et professionnels. Intervention 7j/7, devis sous 24h.{% endblock %}
+{% block url %}{{ path('app_home') }}{% endblock %}
+
+{% block ogTitle %}ESP - Entreprise de Débarras et Nettoyage express{% endblock %}
+{% block ogUrl %}https://esp-rhone-alpes.fr{% endblock %}
+{% block ogImage %}{{ asset('medias/site/banniere.webp') }}{% endblock %}
+{% block ogImageAlt %}ESP Débarras et Nettoyage{% endblock %}
+{% block ogDescription %}Entreprise experte en débarras, nettoyage et du syndrome de Diogène. Services rapides pour particuliers et professionnels. Intervention 7j/7, devis sous 24h.{% endblock %}
 
 {% block body %}
-    <section class="bg-red-200">
-        <p class="text-center bg-yellow-50-800">EEEf</p>
-        <p>JHell</p>
+    <section class="relative bg-white">
+        <div class="mx-auto max-w-7xl lg:grid lg:grid-cols-12 lg:gap-x-8 lg:px-8">
+            <div class="px-6 pb-24 pt-10 sm:pb-32 lg:col-span-7 lg:px-0 lg:pb-24 lg:pt-24 xl:col-span-6">
+                <div class="mx-auto max-w-2xl lg:mx-0">
+                    <h1 class="text-pretty text-4xl sm:text-6xl tracking-tight font-bold text-gray-900 sm:mt-5">Entreprise de débarras et nettoyage express</h1>
+                    <p class="mt-8 text-pretty text-lg text-gray-700">Disponible 7j/7 dans toute la région Rhône-Alpes, ESP débarras et nettoyage intervient rapidement, avec discrétion et professionnalisme.</p>
+                    <div class="mt-10 flex sm:flex-row flex-col w-auto sm:items-center gap-x-6 gap-y-12">
+                        <div class="w-auto">
+                            <a href="{{ path('app_contact') }}" class="text-sm font-semibold text-white bg-gray-900 px-4 py-3 rounded-full border border-gray-900 hover:bg-white hover:text-gray-900 transition duration-100">Demander un devis</a>
+                        </div>
+                        <div class="gap-x-2 items-center flex">
+                            {{ ux_icon('pepicons-print:star-filled', {class: 'w-auto h-8 text-yellow-500'}) }}
+                            <p class="font-semibold"><span class="text-lg">4.7/5 </span>sur plus de <a href="https://g.co/kgs/Pdqw8Bd" target="_blank" class="underline-offset-4 underline">50 avis</a> Google</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="relative lg:col-span-5 lg:-mr-8 xl:absolute xl:inset-0 xl:left-1/2 xl:mr-0">
+                <img class="aspect-[3/2] w-full bg-gray-50 object-cover lg:absolute lg:inset-0 lg:aspect-auto lg:h-full" src="https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2102&q=80" alt="">
+            </div>
+        </div>
     </section>
+    <section class="bg-gray-50 py-24 sm:py-32">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <dl class="mx-auto grid max-w-2xl grid-cols-2 gap-x-8 gap-y-16 text-base/7 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-4">
+                <div>
+                    <div class="mb-8">
+                        {{ ux_icon('pepicons-print:letter', {class: 'w-auto h-14'}) }}
+                    </div>
+                    <dt class="font-semibold text-gray-900 sm:flex sm:items-center gap-x-3">
+                        <div class="inline-block rounded-md border-2 border-primary px-2 py-0.5 text-sm text-primary">
+                            01
+                        </div>
+                        <p class="mt-2.5 sm:mt-0">
+                            Contactez-nous
+                        </p>
+                    </dt>
+                    <dd class="mt-5 text-gray-600">
+                        Définissons vos besoins pour vous proposer la solution idéale. Devis sous 24h.
+                    </dd>
+                </div>
+                <div>
+                    <div class="mb-8">
+                        {{ ux_icon('pepicons-print:file', {class: 'w-auto h-14'}) }}
+                    </div>
+                    <dt class="font-semibold text-gray-900 sm:flex sm:items-center gap-x-3">
+                        <div class="inline-block rounded-md border-2 border-primary px-2 py-0.5 text-sm text-primary">
+                            02
+                        </div>
+                        <p class="mt-2.5 sm:mt-0">
+                            Validez votre devis
+                        </p>
+                    </dt>
+                    <dd class="mt-5 text-gray-600">
+                        Notre proposition vous plaît ? Il ne vous reste plus qu’à la valider ! Aucun acompte demandé.
+                    </dd>
+                </div>
+                <div>
+                    <div class="mb-8">
+                        {{ ux_icon('pepicons-print:checkmark-circle', {class: 'w-auto h-14'}) }}
+                    </div>
+                    <dt class="font-semibold text-gray-900 sm:flex sm:items-center gap-x-3">
+                        <div class="inline-block rounded-md border-2 border-primary px-2 py-0.5 text-sm text-primary">
+                            03
+                        </div>
+                        <p class="mt-2.5 sm:mt-0">
+                            Confirmez votre date
+                        </p>
+                    </dt>
+                    <dd class="mt-5 text-gray-600">
+                        Avant notre venue, choisissez la date et heure d'intervention.
+                    </dd>
+                </div>
+                <div>
+                    <div class="mb-8">
+                        {{ ux_icon('pepicons-print:truck', {class: 'w-auto h-14'}) }}
+                    </div>
+                    <dt class="font-semibold text-gray-900 sm:flex sm:items-center gap-x-3">
+                        <div class="inline-block rounded-md border-2 border-primary px-2 py-0.5 text-sm text-primary">
+                            04
+                        </div>
+                        <p class="mt-2.5 sm:mt-0">
+                            Intervention
+                        </p>
+                    </dt>
+                    <dd class="mt-5 text-gray-600">
+                        C’est le grand jour : nous sommes là. On s’occupe de tout !
+                    </dd>
+                </div>
+            </dl>
+        </div>
+    </section>
+    <section class="bg-white px-6 py-24 sm:py-32 lg:px-8 max-w-7xl mx-auto">
+        <div class="mx-auto max-w-2xl text-center">
+            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Nos domaines d'interventions</h2>
+            <p class="mt-8 text-pretty text-lg text-gray-700">Nous intervenons auprès des professionnels et des particuliers, partout en Rhône-Alpes <i class="text-sm">(Lyon, Valence, Grenoble, Annecy, Salanche...)</i>.</p>
+        </div>
+        <ul role="list" class="mx-auto mt-16 grid grid-cols-1 gap-x-8 gap-y-8 lg:mx-0 max-w-lg lg:max-w-none lg:grid-cols-3">
+            <li class="text-center bg-gray-50 rounded-2xl shadow-lg">
+                <img class="aspect-[3/2] w-full rounded-2xl object-cover" src="{{ asset('medias/site/esp-debarras.webp') }}" alt="Debarras pour professionnel et particuler, ESP Rhones-Alpes">
+                <div class="py-6 px-3">
+                    <h3 class="text-lg/8 font-semibold tracking-tight text-primary">Débarras</h3>
+                    <p class="mt-2 text-sm/7 text-gray-600">Maison, appartement, intérieurs & extérieurs, grange, locaux professionnels, jardins, sites désaffectés, entrepôts…</p>
+                    <div class="mt-6 flex px-3">
+                        <a href="{{ path('app_contact') }}" class="text-sm font-semibold text-gray-900 bg-gray-50 px-4 py-2 w-full rounded-full border border-gray-900 hover:bg-gray-900 hover:text-white transition duration-100">Contactez-nous</a>
+                    </div>
+                </div>
+            </li>
+            <li class="text-center bg-gray-50 rounded-2xl shadow-lg">
+                <img class="aspect-[3/2] w-full rounded-2xl object-cover" src="{{ asset('medias/site/esp-nettoyage.webp') }}" alt="Nettoyage pour particulier et professionnel, ESP Rhones-Alpes">
+                <div class="py-6 px-3">
+                    <h3 class="text-lg/8 font-semibold tracking-tight text-primary">Nettoyage</h3>
+                    <p class="mt-2 text-sm/7 text-gray-600">Nettoyage post-chantier, suites d’incendies ou de décès, traitement des infestations de blattes et punaises de lit... <i>Certifié Biocide</i>.</p>
+                    <div class="mt-6 flex px-3">
+                        <a href="{{ path('app_contact') }}" class="text-sm font-semibold text-gray-900 bg-gray-50 px-4 py-2 w-full rounded-full border border-gray-900 hover:bg-gray-900 hover:text-white transition duration-100">Contactez-nous</a>
+                    </div>
+                </div>
+            </li>
+            <li class="text-center bg-gray-50 rounded-2xl shadow-lg">
+                <img class="aspect-[3/2] w-full rounded-2xl object-cover" src="{{ asset('medias/site/esp-diogene.webp') }}" alt="Intervention pour le syndrome de Diogène, ESP Rhones-Alpes">
+                <div class="py-6 px-3">
+                    <h3 class="text-lg/8 font-semibold tracking-tight text-primary">Diogène</h3>
+                    <p class="mt-2 text-sm/7 text-gray-600">Spécialistes du syndrome de Diogène et de la syllogomanie. Intervention rapide en toutes circonstances.</p>
+                    <div class="mt-6 flex px-3">
+                        <a href="{{ path('app_contact') }}" class="text-sm font-semibold text-gray-900 bg-gray-50 px-4 py-2 w-full rounded-full border border-gray-900 hover:bg-gray-900 hover:text-white transition duration-100">Contactez-nous</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <section class="relative bg-white">
+        <div class="mx-auto grid max-w-7xl lg:grid-cols-2">
+            <img class="order-1 h-56 w-full bg-gray-50 object-cover lg:absolute lg:inset-y-0 lg:left-0 lg:h-full lg:w-1/2" src="{{ asset('medias/site/esp-nettoyage-pro.webp') }}" alt="Entreprise expert en débarras nettoyage et syndrome de diogene dans tous le Rhones-Alpes">
+            <div class="order-2 px-6 pb-24 pt-16 sm:pb-32 sm:pt-20 lg:col-start-2 lg:px-8 lg:pt-32">
+                <div class="mx-auto max-w-2xl lg:mr-0 lg:max-w-lg">
+                    <h2 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Intervention dans toute la région Rhône-Alpes, 7j/7</h2>
+                    <p class="mt-6 text-lg/7 text-gray-600">Nous intervenons rapidement dans toutes les situations. De la plus petite à la plus extrême, avec professionnalisme et rapidité. Ne laissez plus les encombrants vous envahir, nous sommes là pour vous en débarrasser efficacement.</p>
+                    <div class="mt-10 flex flex-col sm:flex-row sm:items-center sm:gap-x-2.5">
+                        <p class="text-lg/7 text-gray-600">Vue dans la presse : </p>
+                        <div class="flex items-center gap-x-2.5 mt-5 sm:mt-0">
+                            <a href="https://www.bfmtv.com/economie/entreprises/esp-debarras-nettoyage-rhone-alpes-vite-fait-mieux-fait_AO-202204150002.html" target="_blank">
+                                <img class="w-auto h-12 sm:h-14 rounded-md" src="{{ asset('medias/site/bfm-business.webp') }}" alt="Reportage BFM Business sur l'entreprise ESP">
+                            </a>
+                            <a href="https://www.cnews.fr/le-corner-partenaires/2023-01-20/syndrome-de-diogene-lexpertise-unique-desp-debarras-nettoyage-rhone" target="_blank">
+                                <img class="w-auto h-6 sm:h-8 rounded-md" src="{{ asset('medias/site/cnews.webp') }}" alt="Reportage BFM Business sur l'entreprise ESP">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mt-12">
+                        <a href="{{ path('app_contact') }}" class="text-sm font-semibold text-white bg-gray-900 px-4 py-3 rounded-full border border-gray-900 hover:bg-white hover:text-gray-900 transition duration-100">Contactez-nous</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="bg-gray-50 py-24 sm:py-32">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <h2 class="text-center text-xl sm:text-2xl font-bold text-gray-900 flex items-center mx-auto justify-center">
+                +150 avis Google cumulés
+                {{ ux_icon('pepicons-print:shield-check', {class: 'w-auto h-8 ml-2 text-green-600'}) }}
+            </h2>
+            <div class="mx-auto grid lg:grid-cols-3 grid-cols-1 mt-10 sm:mt-16 gap-x-4 gap-y-4">
+                <div class="bg-white shadow-md p-5 rounded-2xl max-w-xl mx-auto">
+                    <div class="flex items-center gap-x-4">
+                        <img src="{{ asset('medias/site/review-1.webp') }}" alt="Avis client 1" class="w-10 h-10 rounded-full">
+                        <div>
+                            <p class="text-gray-900 text-sm font-semibold">Vincent Orgon</p>
+                            <p class="text-xs text-gray-500">PDG Instr</p>
+                        </div>
+                    </div>
+                    <p class="text-base text-gray-500 mt-4">
+                        "Un grand merci pour votre intervention. Tout s’est bien passé et le résultat est impeccable."
+                    </p>
+                    <div class="flex items-center space-x-0.5 mt-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 fill-yellow-500">
+                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 fill-yellow-500">
+                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 fill-yellow-500">
+                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 fill-yellow-500">
+                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 fill-yellow-500">
+                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="bg-white shadow-md p-5 rounded-2xl max-w-xl mx-auto">
+                    <div class="flex items-center gap-x-4">
+                        <img src="{{ asset('medias/site/review-1.webp') }}" alt="Avis client 1" class="w-10 h-10 rounded-full">
+                        <div>
+                            <p class="text-gray-900 text-sm font-semibold">Vincent Orgon</p>
+                            <p class="text-xs text-gray-500">PDG Instr</p>
+                        </div>
+                    </div>
+                    <p class="text-base text-gray-500 mt-4">
+                        "Merci à Patrice et son équipe pour l'intervention rapide. Je recommande, professionnel et serviable."
+                    </p>
+                    <div class="flex items-center space-x-0.5 mt-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 fill-yellow-500">
+                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 fill-yellow-500">
+                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 fill-yellow-500">
+                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 fill-yellow-500">
+                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 fill-yellow-500">
+                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="bg-white shadow-md p-5 rounded-2xl max-w-xl mx-auto">
+                    <div class="flex items-center gap-x-4">
+                        <img src="{{ asset('medias/site/review-1.webp') }}" alt="Avis client 1" class="w-10 h-10 rounded-full">
+                        <div>
+                            <p class="text-gray-900 text-sm font-semibold">Vincent Orgon</p>
+                            <p class="text-xs text-gray-500">PDG Instr</p>
+                        </div>
+                    </div>
+                    <p class="text-base text-gray-500 mt-4">
+                        "Nous collaborons ensemble depuis 4 ans. Toujours à l'heure et le travail est d'une grande qualité."
+                    </p>
+                    <div class="flex items-center space-x-0.5 mt-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 fill-yellow-500">
+                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 fill-yellow-500">
+                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 fill-yellow-500">
+                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 fill-yellow-500">
+                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 fill-yellow-500">
+                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="relative bg-white">
+        <div class="mx-auto grid max-w-7xl lg:grid-cols-2">
+            <img class="order-1 lg:order-2 h-56 w-full bg-gray-50 object-cover lg:absolute lg:col-start-2 lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2" src="{{ asset('medias/site/esp-nettoyage-pro.webp') }}" alt="Specialiste du syndrome de Diogene, expert en nettoyage et debarras">
+            <div class="order-2 px-6 pb-24 pt-16 sm:pb-32 sm:pt-20 lg:px-8 lg:pt-32">
+                <div class="mx-auto max-w-2xl lg:ml-0 lg:max-w-lg">
+                    <h2 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">ESP, spécialiste du débarras, nettoyage et Diogène depuis 19 ans</h2>
+                    <p class="mt-6 text-lg/7 text-gray-600">ESP accompagne particuliers et professionnels pour le débarras, nettoyage et les interventions spécifiques comme les cas Diogène, avec rapidité, discrétion et efficacité dans tous le Rhône-Alpes.</p>
+                    <dl class="mt-16 grid max-w-xl gap-8 sm:mt-20 grid-cols-2 xl:mt-16">
+                        <div class="flex flex-col gap-y-3 border-l border-gray-900/10 pl-6">
+                            <dt class="text-sm leading-6 text-gray-600">Véhicule de débarras prêt à intervenir</dt>
+                            <dd class="order-first text-3xl font-semibold tracking-tight text-gray-700"><span class="text-primary">04</span> +</dd>
+                        </div>
+                        <div class="flex flex-col gap-y-3 border-l border-gray-900/10 pl-6">
+                            <dt class="text-sm leading-6 text-gray-600">Personnels formés et expérimentés</dt>
+                            <dd class="order-first text-3xl font-semibold tracking-tight text-gray-700"><span class="text-primary">09</span> +</dd>
+                        </div>
+                        <div class="flex flex-col gap-y-3 border-l border-gray-900/10 pl-6">
+                            <dt class="text-sm leading-6 text-gray-600">Interventions annuelles pour professionnels et particuliers</dt>
+                            <dd class="order-first text-3xl font-semibold tracking-tight text-gray-700"><span class="text-primary">150</span> +</dd>
+                        </div>
+                        <div class="flex flex-col gap-y-3 border-l border-gray-900/10 pl-6">
+                            <dt class="text-sm leading-6 text-gray-600">Agences en France et en Suisse</dt>
+                            <dd class="order-first text-3xl font-semibold tracking-tight text-gray-700"><span class="text-primary">05</span> +</dd>
+                        </div>
+                    </dl>
+                    <div class="mt-16">
+                        <a href="{{ path('app_contact') }}" class="text-sm font-semibold text-white bg-gray-900 px-4 py-3 rounded-full border border-gray-900 hover:bg-white hover:text-gray-900 transition duration-100">Contactez-nous</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="bg-gray-50">
+        <div class="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
+            <div class="mx-auto max-w-4xl text-center">
+                <h2 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Pourquoi nous choisir ?</h2>
+                <video controls class="rounded-2xl p-2 ring-1 ring-inset ring-gray-900/10 bg-red-200 mt-12 shadow-md">
+                    {% if 'Firefox' in app.request.headers.get('User-Agent') %}
+                        <source src="{{ asset('medias/video/esp-presentation.webm') }}" type="video/mp4">
+                    {% else %}
+                        <source src="{{ asset('medias/video/esp-presentation.mp4') }}" type="video/mp4">
+                    {% endif %}
+                    Votre navigateur ne prend pas en charge les vidéos.
+                </video>
+                <div class="grid grid-cols-1 md:grid-cols-3 mt-16 sm:gap-x-10 gap-y-10">
+                    <div class="max-w-lg mx-auto">
+                        <dt class="font-semibold text-gray-900 flex items-center gap-x-3">
+                            <div class="rounded-full border-2 border-primary bg-primary px-2 py-0.5 text-sm text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                                </svg>
+                            </div>
+                            <p>Intervention 7j/7 </p>
+                        </dt>
+                        <dd class="mt-5 text-gray-600 text-start">
+                            Intervention possible sous 24h - 7j/7 avec discrétion garantie. Devis sous 24h.
+                        </dd>
+                    </div>
+                    <div class="max-w-lg mx-auto">
+                        <dt class="font-semibold text-gray-900 flex items-center gap-x-3">
+                            <div class="rounded-full border-2 border-primary bg-primary px-2 py-0.5 text-sm text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                                </svg>
+                            </div>
+                            <span>Aucun acompte</span>
+                        </dt>
+                        <dd class="mt-5 text-gray-600 text-start">
+                            Aucun acompte n’est demandé : vous réglez uniquement après la fin de l’intervention.
+                        </dd>
+                    </div>
+                    <div class="max-w-lg mx-auto">
+                        <dt class="font-semibold text-gray-900 flex items-center gap-x-3">
+                            <div class="rounded-full border-2 border-primary bg-primary px-2 py-0.5 text-sm text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                                </svg>
+                            </div>
+                            <span>Expert certifié</span>
+                        </dt>
+                        <dd class="mt-5 text-gray-600 text-start">
+                            Nous intervenons même dans les situations les plus difficiles et sommes certifiés
+                            <a href="https://www.ecologie.gouv.fr/politiques-publiques/produits-biocides#:~:text=pr%C3%A9sente%20soient%20acceptables.-,Qu'est%2Dce%20qu'un%20produit%20biocide%20%3F,une%20action%20chimique%20ou%20biologique." target="_blank" class="underline-offset-4 underline decoration-dotted">Biocide</a>.
+                        </dd>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% include 'components/cta_footer.html.twig' %}
 {% endblock %}

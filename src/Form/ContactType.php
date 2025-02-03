@@ -6,6 +6,7 @@ use App\Entity\Contact;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -49,8 +50,12 @@ class ContactType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('city')
-            ->add('zipCode')
+            ->add('city', TextType::class, [
+                'required' => false,
+            ])
+            ->add('zipCode', TextType::class, [
+                'required' => false,
+            ])
             ->add('contactType', ChoiceType::class, [
                 'choices'  => [
                     'Particulier' => 'Particulier',
@@ -64,7 +69,9 @@ class ContactType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('message')
+            ->add('message', TextareaType::class, [
+                'required' => false,
+            ])
         ;
     }
 

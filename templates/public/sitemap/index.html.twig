@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block robots %}index, follow{% endblock %}
+{% block title %}Sitemap{% endblock %}
+{% block description %}Accédez au plan du site pour découvrir facilement nos pages : services de débarras, nettoyage, contact et plus.{% endblock %}
+{% block url %}{{ path('app_legal_notice') }}{% endblock %}
+
+{% block ogTitle %}ESP - Sitemap{% endblock %}
+{% block ogUrl %}https://esp-rhone-alpes.fr/sitemap{% endblock %}
+{% block ogImage %}{{ asset('medias/site/banniere.webp') }}{% endblock %}
+{% block ogImageAlt %}ESP Débarras et Nettoyage{% endblock %}
+{% block ogDescription %}Accédez au plan du site pour découvrir facilement nos pages : services de débarras, nettoyage, contact et plus.{% endblock %}
+
+{% block body %}
+    <section class="bg-white py-12 sm:py-16">
+        <div class="mx-auto max-w-2xl text-center px-6 lg:px-8">
+            <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Sitemap</h1>
+        </div>
+        <div class="mt-10 sm:mt-16 max-w-4xl mx-auto px-6 lg:px-8">
+            <div>
+                <h2 class="text-lg font-semibold text-gray-900 underline underline-offset-4 decoration-dotted">Site</h2>
+                <ul class="list-disc ml-10 space-y-2 mt-4">
+                    <li class="text-gray-700"><a href="{{ path('app_home') }}">Page d'accueil</a></li>
+                    <li class="text-gray-700"><a href="{{ path('app_service_intervention') }}">Nos interventions</a></li>
+                    <li class="text-gray-700"><a href="{{ path('app_contact') }}">Contactez-nous</a></li>
+                    <li class="text-gray-700"><a href="{{ path('app_legal_notice') }}">Mentions légales</a></li>
+                    <li class="text-gray-700"><a href="{{ path('app_personal_data') }}">Données personnelles</a></li>
+                </ul>
+            </div>
+            <div class="mt-10">
+                <h2 class="text-lg font-semibold text-gray-900 underline underline-offset-4 decoration-dotted">Nos agences</h2>
+                <ul class="list-disc ml-10 space-y-2 mt-4">
+                    <li class="text-gray-700"><a href="https://g.page/r/CXTShvb7SKn9EBM" target="_blank">Agence Lyon</a></li>
+                    <li class="text-gray-700"><a href="https://g.page/r/CdE-azRc8LhKEBM" target="_blank">Agence Ferney-Voltaire</a></li>
+                    <li class="text-gray-700"><a href="https://g.page/r/CcY-mhf8NLfeEBM" target="_blank">Agence Chambéry</a></li>
+                    <li class="text-gray-700"><a href="https://g.page/r/CU67wVMiBmoAEBM" target="_blank">Agence Lyon</a></li>
+                </ul>
+            </div>
+            <div class="mt-10">
+                <h2 class="text-lg font-semibold text-gray-900 underline underline-offset-4 decoration-dotted">Blog</h2>
+                <ul class="list-disc ml-10 space-y-2 mt-4">
+                    <li class="text-gray-700"><a href="{{ path('app_blog') }}">Blog</a></li>
+                    {% for post in posts %}
+                        <li class="text-gray-700 cap">
+                            <a href="{{ path('app_blog_post', {'slug': post.slug }) }}">{{ post.title }}</a> -
+                            <time datetime="{{ post.createdAt | date('d F Y') }}" class="capitalize text-gray-600 text-sm">{{ post.createdAt | date('d F Y') | format_date(locale='fr') }}</time>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </section>
+{% endblock %}

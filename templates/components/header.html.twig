@@ -1,0 +1,76 @@
+<header class="bg-white" data-controller="hello">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+        <div class="flex items-center gap-x-10">
+            <div class="flex lg:flex-1">
+                <a href="{{ path('app_home') }}" class="-m-1.5 p-1.5">
+                    <span class="sr-only">ESP Débarras et Nettoyage</span>
+                    <img class="h-6 sm:h-7 w-auto" src="{{ asset('medias/logo/esp-debarras-nettoyage-rhone-alpes-logo-header.svg') }}" alt="ESP débarras et nettoyage rhone alpes logo">
+                </a>
+            </div>
+            <div class="hidden lg:flex lg:gap-x-8">
+                <a href="#" class="text-sm font-medium text-gray-900">Nos préstations</a>
+                <a href="#" class="text-sm font-medium text-gray-900">Avis de nos clients</a>
+                <a href="#" class="text-sm font-medium text-gray-900">Nos agences</a>
+            </div>
+        </div>
+        <div class="flex lg:hidden">
+            <button type="button" class="-m-2.5 inline-flex items-center justify-center p-2.5 text-gray-700 hover:bg-gray-50 transition duration-100 rounded-full">
+                <span class="sr-only">Open main menu</span>
+                <svg class="size-7" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </button>
+        </div>
+        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+            <div class="flex justify-center items-center gap-x-2">
+                <a href="tel:0641288848" class="text-base font-semibold text-gray-900 px-4 py-3 rounded-md flex items-center gap-x-3">
+                    <span class="relative flex size-3">
+                      <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
+                      <span class="relative inline-flex size-3 rounded-full bg-green-500"></span>
+                    </span>
+                    06 41 28 88 48
+                </a>
+                <a href="{{ path('app_contact') }}" class="text-sm font-semibold text-white bg-gray-900 px-4 py-3 rounded-full border border-gray-900 hover:bg-white hover:text-gray-900 transition duration-100">Contactez-nous 7j/7</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Mobile menu, show/hide based on menu open state. -->
+    <div class="hidden" role="dialog" aria-modal="true" data-action="hello#close">
+        <!-- Background backdrop, show/hide based on slide-over state. -->
+        <div class="fixed inset-0 z-10"></div>
+        <div class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+            <div class="flex items-center justify-between">
+                <a href="{{ path('app_home') }}" class="-m-1.5 p-1.5">
+                    <span class="sr-only">ESP Débarras et Nettoyage</span>
+                    <img class="h-6 sm:h-7 w-auto" src="{{ asset('medias/logo/esp-debarras-nettoyage-rhone-alpes-logo-header.svg') }}"  alt="ESP débarras et nettoyage rhone alpes logo">
+                </a>
+                <button type="button" class="-m-2.5 p-2.5 text-gray-700 hover:bg-gray-50 transition duration-100 rounded-full">
+                    <span class="sr-only">Close menu</span>
+                    <svg class="size-7" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="mt-6 flow-root">
+                <div class="-my-6 divide-y divide-gray-500/10">
+                    <div class="space-y-2 py-6">
+                        <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Product</a>
+                        <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Features</a>
+                        <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Marketplace</a>
+                        <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Company</a>
+                    </div>
+                    <div class="py-6">
+                        <a href="{{ path('app_contact') }}" class="-mx-3 block text-base rounded-full px-3 py-2.5 font-semibold text-white transition duration-100 text-center bg-gray-900 hover:bg-white border-gray-900 border hover:text-gray-900">Contactez-nous</a>
+                        <a href="tel:0641288848" class="text-base justify-center mt-3 font-semibold text-gray-900 px-4 py-3 rounded-md flex items-center gap-x-3">
+                            <span class="relative flex size-3">
+                              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
+                              <span class="relative inline-flex size-3 rounded-full bg-green-500"></span>
+                            </span>
+                            06 41 28 88 48
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

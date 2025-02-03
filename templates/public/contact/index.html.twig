@@ -1,7 +1,130 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ContactController!{% endblock %}
+{% block robots %}index, follow{% endblock %}
+{% block title %}Contactez-nous (Devis sous 24h){% endblock %}
+{% block description %}Contactez-nous pour un devis de débarras, nettoyage ou syndrome de Diogène. Disponible 7j/7 pour particuliers et professionnels, réponse rapide sous 24h.{% endblock %}
+{% block url %}{{ path('app_contact') }}{% endblock %}
+
+{% block ogTitle %}ESP - Contactez-nous (Devis sous 24h)s{% endblock %}
+{% block ogUrl %}https://esp-rhone-alpes.fr/contact{% endblock %}
+{% block ogImage %}{{ asset('medias/site/banniere.webp') }}{% endblock %}
+{% block ogImageAlt %}ESP Débarras et Nettoyage{% endblock %}
+{% block ogDescription %}Contactez-nous pour un devis de débarras, nettoyage ou syndrome de Diogène. Disponible 7j/7 pour particuliers et professionnels, réponse rapide sous 24h.{% endblock %}
 
 {% block body %}
-<p>test</p>
+    <section class="bg-white px-6 py-12 sm:py-16 lg:px-8">
+        <div class="mx-auto max-w-2xl text-center">
+            <h1 class="text-balance text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">Contactez-nous</h1>
+            <p class="mt-6 text-gray-600">Nous sommes à votre service 7j/7. <span class="underline-offset-4 underline decoration-dotted">Rappel et devis sous 24h</span>, aucun acompte demandé avant l'intervention.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 max-w-xl mx-auto mt-10 gap-x-5 gap-y-5">
+            <div class="flex items-center justify-center bg-gray-900 p-5 shadow-sm rounded-sm gap-x-2.5">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 text-primary">
+                        <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <a href="tel:0641288848" class="text-white font-medium text-sm">06 41 28 88 48</a>
+            </div>
+            <div class="flex items-center justify-center bg-gray-900 p-5 shadow-sm rounded-sm gap-x-2.5">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 text-primary">
+                        <path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z" />
+                        <path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z" />
+                    </svg>
+                </div>
+                <a href="tel:0641288848" class="text-white text-sm font-medium">contact@esp-rhone-alpes.fr</a>
+            </div>
+        </div>
+        <div class="relative mt-10 max-w-xl mx-auto">
+            <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                <div class="w-full border-t border-gray-200"></div>
+            </div>
+            <div class="relative flex justify-center text-sm/6 font-medium">
+                <h2 class="bg-white px-6 text-gray-900">Formulaire</h2>
+            </div>
+        </div>
+        {{ form_start(form, {'attr': {'class': 'mx-auto mt-10 max-w-xl'}}) }}
+        {{ form_errors(form) }}
+            {% for message in app.flashes('success') %}
+                <div class="rounded-xl bg-green-50 p-4 mb-8 border border-green-300">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <svg class="size-6 text-green-950" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <div class="ml-3 text-base font-medium text-green-800">
+                            <p>{{ message }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+                <div>
+                    {{ form_label(form.firstName, 'Prénom', {'label_attr': {'class': 'block text-sm/6 font-semibold text-gray-900'}}) }}
+                    <div class="mt-2.5">
+                        {{ form_widget(form.firstName, {'attr': {'class': 'block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray-900'}}) }}
+                    </div>
+                </div>
+                <div>
+                    {{ form_label(form.lastName, 'Nom', {'label_attr': {'class': 'block text-sm/6 font-semibold text-gray-900'}}) }}
+                    <div class="mt-2.5">
+                        {{ form_widget(form.lastName, {'attr': {'class': 'block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray-900'}}) }}
+                    </div>
+                </div>
+                <div>
+                    {{ form_label(form.email, 'Email', {'label_attr': {'class': 'block text-sm/6 font-semibold text-gray-900'}}) }}
+                    <div class="mt-2.5">
+                        {{ form_widget(form.email, {'attr': {'class': 'block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray-900'}}) }}
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between text-sm items-center">
+                        {{ form_label(form.phoneNumber, 'Téléphone', {'label_attr': {'class': 'block text-sm/6 font-semibold text-gray-900'}}) }}
+                        <p class="text-gray-400">Optionel</p>
+                    </div>
+                    <div class="mt-2.5">
+                        {{ form_widget(form.phoneNumber, {'attr': {'class': 'block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray-900'}}) }}
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between text-sm items-center">
+                        {{ form_label(form.city, 'Ville d\'intervention', {'label_attr': {'class': 'block text-sm/6 font-semibold text-gray-900'}}) }}
+                        <p class="text-gray-400">Optionel</p>
+                    </div>
+                    <div class="mt-2.5">
+                        {{ form_widget(form.city, {'attr': {'class': 'block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray-900'}}) }}
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between text-sm items-center">
+                        {{ form_label(form.zipCode, 'Code postal', {'label_attr': {'class': 'block text-sm/6 font-semibold text-gray-900'}}) }}
+                        <p class="text-gray-400">Optionel</p>
+                    </div>
+                    <div class="mt-2.5">
+                        {{ form_widget(form.zipCode, {'attr': {'class': 'block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray-900'}}) }}
+                    </div>
+                </div>
+                <div class="col-span-2">
+                    {{ form_label(form.contactType, 'Vous êtes ?', {'label_attr': {'class': 'block text-sm/6 font-semibold text-gray-900'}}) }}
+                    <div class="mt-2.5">
+                        {{ form_widget(form.contactType, {'attr': {'class': 'block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray-900'}}) }}
+                    </div>
+                </div>
+                <div class="col-span-2">
+                    <div class="flex justify-between text-sm items-center">
+                        {{ form_label(form.message, 'Message', {'label_attr': {'class': 'block text-sm/6 font-semibold text-gray-900'}}) }}
+                        <p class="text-gray-400">Optionel</p>
+                    </div>
+                    <div class="mt-2.5">
+                        {{ form_widget(form.message, {'attr': {'rows': '5', 'class': 'block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray-900'}}) }}
+                    </div>
+                </div>
+            </div>
+            <div class="mt-10">
+                <button type="submit" class="block w-full rounded-full bg-gray-900 border-gray-900 border transition duration-100 px-3.5 py-4.5 text-center text-sm font-semibold text-white hover:bg-white hover:text-gray-900">Envoyer <span class="font-normal text-sm italic">(devis sous 24h)</span></button>
+            </div>
+        {{ form_end(form) }}
+    </section>
 {% endblock %}

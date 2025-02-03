@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block robots %}index, follow{% endblock %}
+{% block title %}Nos interventions (Avant/Après){% endblock %}
+{% block description %}Découvrez nos interventions en photos (avant/après) dans tout le Rhône-Alpes : débarras, nettoyage et syndrome de Diogène.{% endblock %}
+{% block url %}{{ path('app_service_intervention') }}{% endblock %}
+
+{% block ogTitle %}ESP - Nos interventions (Avant/Après){% endblock %}
+{% block ogUrl %}https://esp-rhone-alpes.fr/nos-interventions{% endblock %}
+{% block ogImage %}{{ asset('medias/site/banniere.webp') }}{% endblock %}
+{% block ogImageAlt %}ESP Débarras et Nettoyage{% endblock %}
+{% block ogDescription %}Découvrez nos interventions en photos (avant/après) dans tout le Rhône-Alpes : débarras, nettoyage et syndrome de Diogène.{% endblock %}
+
+{% block body %}
+    <section class="bg-white py-12 sm:py-16 mx-auto max-w-7xl px-6 lg:px-8 ">
+        <div class="mx-auto max-w-3xl text-center px-6 lg:px-8">
+            <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Nos interventions</h1>
+            <p class="mt-8 text-pretty text-lg text-gray-700">Nous intervenons +150 fois par ans 7j/j pour des <u class="underline underline-offset-4 decoration-dotted">nettoyages</u>,
+                <u class="underline underline-offset-4 decoration-dotted">débarras</u> et <u class="underline underline-offset-4 decoration-dotted">syndrome de Diogène</u> extrême partout dans le Rhône-Alpes.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-6 mt-10 sm:mt-16">
+            <div class="max-w-lg sm:w-full mx-auto bg-gray-50 rounded-2xl">
+                <img src="{{ asset('medias/blog/default.png') }}" class="w-full rounded-2xl" alt="">
+                <div class="px-3 py-6">
+                    <p class="text-center font-semibold text-gray-700">Intervention syndrome de Diogène</p>
+                </div>
+            </div>
+            <div class="max-w-lg sm:w-full mx-auto bg-gray-50 rounded-2xl">
+                <img src="{{ asset('medias/blog/default.png') }}" class="w-full rounded-2xl" alt="">
+                <div class="px-3 py-6">
+                    <p class="text-center font-semibold text-gray-700">Intervention syndrome de Diogène</p>
+                </div>
+            </div>
+            <div class="max-w-lg sm:w-full mx-auto bg-gray-50 rounded-2xl">
+                <img src="{{ asset('medias/blog/default.png') }}" class="w-full rounded-2xl" alt="">
+                <div class="px-3 py-6">
+                    <p class="text-center font-semibold text-gray-700">Intervention syndrome de Diogène</p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
