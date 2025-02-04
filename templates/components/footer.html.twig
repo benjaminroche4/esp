@@ -39,13 +39,10 @@
                         <h3 class="text-sm/6 font-semibold text-white">ESP Rhônes-Alpes</h3>
                         <ul role="list" class="mt-6 space-y-4">
                             <li>
-                                <a href="#" class="text-sm/6 text-gray-400 hover:text-white transition duration-100">Nos préstations</a>
+                                <a href="{{ path('app_home') }}" class="text-sm/6 text-gray-400 hover:text-white transition duration-100">Nos préstations</a>
                             </li>
                             <li>
-                                <a href="#" class="text-sm/6 text-gray-400 hover:text-white transition duration-100">Avis de nos clients</a>
-                            </li>
-                            <li>
-                                <a href="#" class="text-sm/6 text-gray-400 hover:text-white transition duration-100">Nos interventions</a>
+                                <a href="{{ path('app_service_intervention') }}" class="text-sm/6 text-gray-400 hover:text-white transition duration-100">Nos interventions</a>
                             </li>
                             <li>
                                 <a href="{{ path('app_blog') }}" class="text-sm/6 text-gray-400 hover:text-white transition duration-100">Blog</a>
