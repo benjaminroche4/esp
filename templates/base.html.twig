@@ -36,7 +36,9 @@
     </head>
     <body>
         {% include 'components/header.html.twig' %}
-        {% block body %}{% endblock %}
+        <main class="mt-20">
+            {% block body %}{% endblock %}
+        </main>
         {% include 'components/footer.html.twig' %}
     </body>
 </html>

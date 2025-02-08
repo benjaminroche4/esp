@@ -30,7 +30,15 @@
                 </div>
             </div>
             <div class="relative lg:col-span-5 lg:-mr-8 xl:absolute xl:inset-0 xl:left-1/2 xl:mr-0">
-                <img class="aspect-[3/2] w-full bg-gray-50 object-cover lg:absolute lg:inset-0 lg:aspect-auto lg:h-full" src="https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2102&q=80" alt="">
+                <video class="top-0 left-0 w-full h-full object-cover" autoplay loop muted playsinline>
+                    {% if 'Firefox' in app.request.headers.get('User-Agent') %}
+                        <source src="{{ asset('medias/video/esp-home.webm') }}" type="video/mp4">
+                    {% else %}
+                        <source src="{{ asset('medias/video/esp-home.mp4') }}" type="video/mp4">
+                    {% endif %}
+                    Votre navigateur ne prend pas en charge les vidéos.
+                </video>
+                <div class="absolute top-0 left-0 w-full h-full bg-gray-900 opacity-20"></div>
             </div>
         </div>
     </section>
@@ -266,7 +274,7 @@
     </section>
     <section class="relative bg-white">
         <div class="mx-auto grid max-w-7xl lg:grid-cols-2">
-            <img class="order-1 lg:order-2 h-56 w-full bg-gray-50 object-cover lg:absolute lg:col-start-2 lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2" src="{{ asset('medias/site/esp-nettoyage-pro.webp') }}" alt="Specialiste du syndrome de Diogene, expert en nettoyage et debarras">
+            <img class="order-1 lg:order-2 h-56 w-full bg-gray-50 object-cover lg:absolute lg:col-start-2 lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2" src="{{ asset('medias/site/esp-nettoyage-rhone-alpes.webp') }}" alt="Specialiste du syndrome de Diogene, expert en nettoyage et debarras">
             <div class="order-2 px-6 pb-24 pt-16 sm:pb-32 sm:pt-20 lg:px-8 lg:pt-32">
                 <div class="mx-auto max-w-2xl lg:ml-0 lg:max-w-lg">
                     <h2 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">ESP, spécialiste du débarras, nettoyage et Diogène depuis 19 ans</h2>

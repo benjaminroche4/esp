@@ -39,7 +39,13 @@ class BlogPostCrudController extends AbstractCrudController
                 ->setMaxLength(160)
                 ->setHelp('Le résumé doit contenir au maximum 160 caractères')
             ,
-            TextEditorField::new('content', 'Contenu de l\'article')->onlyOnDetail(),
+            TextEditorField::new('content', 'Contenu de l\'article')->setTrixEditorConfig(
+                [
+                    'blockAttributes' => [
+                        'default' => ['tagName' => 'p'],
+                        'heading1' => ['tagName' => 'h2'],
+                    ],
+                ]),
             ImageField::new('mainPhoto', 'Photo de l\'article')
                 ->setUploadDir('public/medias/blog/')
                 ->setBasePath('medias/blog/')

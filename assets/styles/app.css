@@ -14,3 +14,42 @@ html {
 .cap::first-letter{
   text-transform:uppercase;
 }
+
+#blog-format > h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+#blog-format > ol {
+  list-style-type: decimal;
+  margin-left: 3rem;
+}
+
+#blog-format a {
+  color: #0a58ca;
+  text-decoration: underline;
+}
+
+#blog-format > blockquote {
+  background: #f1f1f1;
+  padding:1rem;
+  border-radius: 0.50rem;
+}
+
+#blog-format > pre {
+  background: #f1f1f1;
+  padding:1rem;
+  border-radius: 0.50rem;
+}
+
+#blog-format > ul {
+  list-style-type: disc;
+  margin-left: 3rem;
+}
+
+@media (max-width: 380px) {
+  #header-phone {
+    display: none;
+  }
+}
