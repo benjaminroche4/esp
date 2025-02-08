@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\BlogCategory;
 use App\Entity\BlogPost;
+use App\Entity\Contact;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -57,6 +58,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::section('Blog');
         yield MenuItem::linkToCrud('Articles', 'fas fa-list', BlogPost::class);
         yield MenuItem::linkToCrud('Catégories', 'fas fa-list', BlogCategory::class);
+        yield MenuItem::linkToCrud('Contact', 'fas fa-list', Contact::class);
     }
 
 }
