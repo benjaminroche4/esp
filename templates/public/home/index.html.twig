@@ -310,9 +310,9 @@
                 <h2 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Pourquoi nous choisir ?</h2>
                 <video controls class="rounded-2xl p-2 ring-1 ring-inset ring-gray-900/10 bg-red-200 mt-12 shadow-md">
                     {% if 'Firefox' in app.request.headers.get('User-Agent') %}
-                        <source src="{{ asset('medias/video/esp-presentation.webm') }}" type="video/mp4">
+                        <source src="{{ asset('medias/video/esp-presentation.webm') }}#t=0.1" type="video/mp4">
                     {% else %}
-                        <source src="{{ asset('medias/video/esp-presentation.mp4') }}" type="video/mp4">
+                        <source src="{{ asset('medias/video/esp-presentation.mp4') }}#t=0.1" type="video/mp4">
                     {% endif %}
                     Votre navigateur ne prend pas en charge les vidéos.
                 </video>
