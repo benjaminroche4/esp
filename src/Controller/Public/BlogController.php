@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\public;
+namespace App\Controller\Public;
 
 use App\Repository\BlogPostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
