@@ -33,7 +33,7 @@ final class ContactController extends AbstractController
             $emailContact = (new TemplatedEmail())
                 ->from($contact->getEmail())
                 ->to(new Address(EmailConfig::CONTACT_EMAIL))
-                ->subject('[Assurance Genevoise] Nouvelle demande de contact')
+                ->subject('[ESP Site internet] Nouvelle demande de contact')
                 ->htmlTemplate('emails/contact.html.twig')
                 ->context([
                     'createdAt' => new \DateTimeImmutable(),
