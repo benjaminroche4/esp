@@ -69,6 +69,19 @@ class ContactType extends AbstractType
                     ]),
                 ],
             ])
+            ->add('interventionDeadline', ChoiceType::class, [
+                'choices'  => [
+                    'Intervention rapide (1 à 3 jours)' => 'Intervention rapide (1 à 3 jours)',
+                    'Intervention standard (3 à 10 jours)' => 'Intervention standard (3 à 10 jours)',
+                    'Intervention étendue (10 jours et +)' => 'Intervention étendue (10 jours et +)',
+                ],
+                'placeholder' => '',
+                'constraints' => [
+                    new Assert\NotBlank([
+                        'message' => 'Ce champ ne ne doit pas être vide.',
+                    ]),
+                ],
+            ])
             ->add('message', TextareaType::class, [
                 'required' => false,
             ])

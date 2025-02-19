@@ -2,6 +2,7 @@
 <p>{{ createdAt | date('d F Y') | format_date(locale='fr') }} à {{ createdAt | date('H:i') }}</p>
 <br/><br/>
 <p><span>Type de client :</span>  {{ contactType }}</p>
+<p><span>Délais d'intervention :</span>  {{ interventionDeadline }}</p>
 <p><span>Nom/Prénom :</span>  {{ firstName }} {{ lastName }}</p>
 <p><span>Email :</span>  {{ emailContact }}</p>
 <p><span>Téléphone :</span>  {{ phoneNumber }}</p>

@@ -38,6 +38,7 @@ final class ContactController extends AbstractController
                 ->context([
                     'createdAt' => new \DateTimeImmutable(),
                     'contactType' => $contact->getContactType(),
+                    'interventionDeadline' => $contact->getInterventionDeadline(),
                     'firstName' => $contact->getFirstName(),
                     'lastName' => $contact->getLastName(),
                     'city' => $contact->getCity(),

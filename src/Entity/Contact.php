@@ -41,6 +41,9 @@ class Contact
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $interventionDeadline = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -150,6 +153,18 @@ class Contact
     public function setCreatedAt(\DateTimeImmutable $createdAt): static
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getInterventionDeadline(): ?string
+    {
+        return $this->interventionDeadline;
+    }
+
+    public function setInterventionDeadline(string $interventionDeadline): static
+    {
+        $this->interventionDeadline = $interventionDeadline;
 
         return $this;
     }
