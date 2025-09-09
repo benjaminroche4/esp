@@ -1,44 +1,44 @@
 {% extends 'base.html.twig' %}
 
 {% block robots %}index, follow{% endblock %}
-{% block title %}Entreprise de Débarras et Nettoyage express{% endblock %}
-{% block description %}Entreprise experte en débarras, nettoyage et du syndrome de Diogène. Services rapides pour particuliers et professionnels. Intervention 7j/7, devis sous 24h.{% endblock %}
-{% block url %}{{ path('app_home') }}{% endblock %}
+{% block title %}Agence Genève{% endblock %}
+{% block description %}Entreprise de débarras à Genève : intervention rapide et discrète dans tout le canton de Genève. Enlèvement d’encombrants, nettoyage complet, service 7j/7.{% endblock %}
+{% block url %}{{ path('app_city_geneva') }}{% endblock %}
 
-{% block ogTitle %}ESP - Entreprise de Débarras et Nettoyage express{% endblock %}
-{% block ogUrl %}https://esp-rhone-alpes.fr{% endblock %}
+{% block ogTitle %}ESP - Agence Genève{% endblock %}
+{% block ogUrl %}https://esp-rhone-alpes.fr/agence/geneve{% endblock %}
 {% block ogImage %}{{ asset('medias/site/banniere.webp') }}{% endblock %}
 {% block ogImageAlt %}ESP Débarras et Nettoyage{% endblock %}
-{% block ogDescription %}Entreprise experte en débarras, nettoyage et du syndrome de Diogène. Services rapides pour particuliers et professionnels. Intervention 7j/7, devis sous 24h.{% endblock %}
+{% block ogDescription %}Entreprise de débarras à Genève : intervention rapide et discrète dans tout le canton de Genève. Enlèvement d’encombrants, nettoyage complet, service 7j/7.{% endblock %}
 
 {% block body %}
-    <section class="relative bg-white">
-        <div class="mx-auto max-w-7xl lg:grid lg:grid-cols-12 lg:gap-x-8 lg:px-8">
-            <div class="px-6 pb-24 pt-10 sm:pb-32 lg:col-span-7 lg:px-0 lg:pb-24 lg:pt-24 xl:col-span-6">
-                <div class="mx-auto max-w-2xl lg:mx-0">
-                    <h1 class="text-pretty text-4xl sm:text-6xl tracking-tight font-bold text-gray-900 sm:mt-5">Entreprise de débarras et nettoyage express</h1>
-                    <p class="mt-8 text-pretty text-lg text-gray-700">Disponible 7j/7 dans toute la région Rhône-Alpes, ESP débarras et nettoyage intervient rapidement, avec discrétion et professionnalisme.</p>
-                    <div class="mt-10 flex sm:flex-row flex-col w-auto sm:items-center gap-x-6 gap-y-12">
-                        <div class="w-auto">
-                            <a href="{{ path('app_contact') }}" class="text-sm font-semibold text-white bg-gray-900 px-4 py-3 rounded-full border border-gray-900 hover:bg-white hover:text-gray-900 transition duration-100">Demander un devis</a>
-                        </div>
-                        <div class="gap-x-2 items-center flex">
-                            {{ ux_icon('pepicons-print:star-filled', {class: 'w-auto h-8 text-yellow-500'}) }}
-                            <p class="font-semibold"><span class="text-lg">4.7/5 </span>sur plus de <a href="https://g.co/kgs/Pdqw8Bd" target="_blank" class="underline-offset-4 underline">50 avis</a> Google</p>
-                        </div>
-                    </div>
+    <section class="relative isolate overflow-hidden bg-white px-6 py-24 lg:px-8">
+        <img src="{{ asset('medias/site/esp-geneva.webp') }}" alt="" class="absolute inset-0 -z-10 size-full object-cover opacity-10" />
+        <div aria-hidden="true" class="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl">
+            <div style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" class="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-15"></div>
+        </div>
+        <div aria-hidden="true" class="absolute -top-52 left-1/2 -z-10 -translate-x-1/2 transform-gpu blur-3xl sm:top-[-28rem] sm:ml-16 sm:translate-x-0">
+            <div style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" class="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-15"></div>
+        </div>
+        <div class="mx-auto max-w-2xl text-center flex flex-col items-center justify-center">
+            <h1 class="text-pretty text-4xl sm:text-6xl tracking-tight font-bold text-gray-900 sm:mt-5">
+                Entreprise de débarras et nettoyage à Genève
+            </h1>
+            <p class="mt-8 text-pretty text-lg text-gray-700">
+                Disponible 7j/7 dans toute le canton de Genève, ESP débarras et nettoyage intervient rapidement, avec discrétion et professionnalisme.
+            </p>
+            <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-x-6 gap-y-6">
+                <a href="{{ path('app_contact') }}"
+                   class="text-sm font-semibold text-white bg-gray-900 px-4 py-3 rounded-full border border-gray-900 hover:bg-white/60 hover:text-gray-900 transition duration-100">
+                    Demander un devis
+                </a>
+                <div class="flex items-center justify-center gap-x-2">
+                    {{ ux_icon('pepicons-print:star-filled', {class: 'w-8 h-8 text-yellow-500'}) }}
+                    <p class="font-semibold">
+                        <span class="text-lg">4.7/5 </span>sur plus de
+                        <a href="https://g.co/kgs/Pdqw8Bd" target="_blank" class="underline-offset-4 underline">50 avis</a> Google
+                    </p>
                 </div>
-            </div>
-            <div class="relative lg:col-span-5 lg:-mr-8 xl:absolute xl:inset-0 xl:left-1/2 xl:mr-0">
-                <video class="top-0 left-0 w-full h-full object-cover" autoplay loop muted playsinline>
-                    {% if 'Firefox' in app.request.headers.get('User-Agent') %}
-                        <source src="{{ asset('medias/video/esp-home.webm') }}" type="video/mp4">
-                    {% else %}
-                        <source src="{{ asset('medias/video/esp-home.mp4') }}" type="video/mp4">
-                    {% endif %}
-                    Votre navigateur ne prend pas en charge les vidéos.
-                </video>
-                <div class="absolute top-0 left-0 w-full h-full bg-gray-900 opacity-20"></div>
             </div>
         </div>
     </section>
@@ -115,7 +115,7 @@
     <section class="bg-white px-6 py-24 sm:py-32 lg:px-8 max-w-7xl mx-auto">
         <div class="mx-auto max-w-2xl text-center">
             <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Nos domaines d'interventions</h2>
-            <p class="mt-8 text-pretty text-lg text-gray-700">Nous intervenons auprès des professionnels et des particuliers, partout en Rhône-Alpes <i class="text-sm">(Lyon, Valence, Grenoble, Annecy, Salanche...)</i>.</p>
+            <p class="mt-8 text-pretty text-lg text-gray-700">Nous intervenons auprès des professionnels et des particuliers, partout dans le canton de Genève <i class="text-sm">(Carouge, Meyrin, Vernier, Onex, Genève...)</i>.</p>
         </div>
         <ul role="list" class="mx-auto mt-16 grid grid-cols-1 gap-x-8 gap-y-8 lg:mx-0 max-w-lg lg:max-w-none lg:grid-cols-3">
             <li class="text-center bg-gray-50 rounded-2xl shadow-lg">
@@ -152,11 +152,11 @@
     </section>
     <section class="relative bg-white">
         <div class="mx-auto grid max-w-7xl lg:grid-cols-2">
-            <img class="order-1 h-56 w-full bg-gray-50 object-cover lg:absolute lg:inset-y-0 lg:left-0 lg:h-full lg:w-1/2" src="{{ asset('medias/site/esp-nettoyage-pro.webp') }}" alt="Entreprise expert en débarras nettoyage et syndrome de diogene dans tous le Rhones-Alpes">
+            <img class="order-1 h-56 w-full bg-gray-50 object-cover lg:absolute lg:inset-y-0 lg:left-0 lg:h-full lg:w-1/2" src="{{ asset('medias/site/esp-suisse.webp') }}" alt="Entreprise expert en débarras nettoyage et syndrome de diogene dans tous le Rhones-Alpes">
             <div class="order-2 px-6 pb-24 pt-16 sm:pb-32 sm:pt-20 lg:col-start-2 lg:px-8 lg:pt-32">
                 <div class="mx-auto max-w-2xl lg:mr-0 lg:max-w-lg">
-                    <h2 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Intervention dans toute la région Rhône-Alpes, 7j/7</h2>
-                    <p class="mt-6 text-lg/7 text-gray-600">Nous intervenons rapidement dans toutes les situations. De la plus petite à la plus extrême, avec professionnalisme et rapidité. Ne laissez plus les encombrants vous envahir, nous sommes là pour vous en débarrasser efficacement.</p>
+                    <h2 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Intervention dans tout le canton de Genève, 7j/7</h2>
+                    <p class="mt-6 text-lg/7 text-gray-600">Nous intervenons rapidement dans tout le canton de Genève. Qu’il s’agisse d’un petit débarras ou d’une situation plus exigeante, nous travaillons avec professionnalisme, efficacité et discrétion. Ne laissez plus les encombrants envahir votre espace.</p>
                     <div class="mt-10 flex flex-col sm:flex-row sm:items-center sm:gap-x-2.5">
                         <p class="text-lg/7 text-gray-600">Vue dans la presse : </p>
                         <div class="flex items-center gap-x-2.5 mt-5 sm:mt-0">
@@ -278,7 +278,7 @@
             <div class="order-2 px-6 pb-24 pt-16 sm:pb-32 sm:pt-20 lg:px-8 lg:pt-32">
                 <div class="mx-auto max-w-2xl lg:ml-0 lg:max-w-lg">
                     <h2 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">ESP, spécialiste du débarras, nettoyage et Diogène depuis 15 ans</h2>
-                    <p class="mt-6 text-lg/7 text-gray-600">ESP accompagne particuliers et professionnels pour le débarras, nettoyage et les interventions spécifiques comme les cas Diogène, avec rapidité, discrétion et efficacité dans tous le Rhône-Alpes.</p>
+                    <p class="mt-6 text-lg/7 text-gray-600">ESP accompagne particuliers et professionnels pour le débarras, nettoyage et les interventions spécifiques comme les cas Diogène, avec rapidité, discrétion et efficacité en Suisse.</p>
                     <dl class="mt-16 grid max-w-xl gap-8 sm:mt-20 grid-cols-2 xl:mt-16">
                         <div class="flex flex-col gap-y-3 border-l border-gray-900/10 pl-6">
                             <dt class="text-sm leading-6 text-gray-600">Véhicule de débarras prêt à intervenir</dt>
@@ -293,69 +293,12 @@
                             <dd class="order-first text-3xl font-semibold tracking-tight text-gray-700"><span class="text-primary">150</span> +</dd>
                         </div>
                         <div class="flex flex-col gap-y-3 border-l border-gray-900/10 pl-6">
-                            <dt class="text-sm leading-6 text-gray-600">Agences en France et en Suisse</dt>
+                            <dt class="text-sm leading-6 text-gray-600">Agences en Suisse et en France</dt>
                             <dd class="order-first text-3xl font-semibold tracking-tight text-gray-700"><span class="text-primary">05</span> +</dd>
                         </div>
                     </dl>
                     <div class="mt-16">
                         <a href="{{ path('app_contact') }}" class="text-sm font-semibold text-white bg-gray-900 px-4 py-3 rounded-full border border-gray-900 hover:bg-white hover:text-gray-900 transition duration-100">Contactez-nous</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="bg-gray-50">
-        <div class="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
-            <div class="mx-auto max-w-4xl text-center">
-                <h2 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Pourquoi nous choisir ?</h2>
-                <video controls class="rounded-2xl p-2 ring-1 ring-inset ring-gray-900/10 bg-red-200 mt-12 shadow-md">
-                    {% if 'Firefox' in app.request.headers.get('User-Agent') %}
-                        <source src="{{ asset('medias/video/esp-presentation.webm') }}#t=0.1" type="video/mp4">
-                    {% else %}
-                        <source src="{{ asset('medias/video/esp-presentation.mp4') }}#t=0.1" type="video/mp4">
-                    {% endif %}
-                    Votre navigateur ne prend pas en charge les vidéos.
-                </video>
-                <div class="grid grid-cols-1 md:grid-cols-3 mt-16 sm:gap-x-10 gap-y-10">
-                    <div class="max-w-lg mx-auto">
-                        <dt class="font-semibold text-gray-900 flex items-center gap-x-3">
-                            <div class="rounded-full border-2 border-primary bg-primary px-2 py-0.5 text-sm text-white">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                                </svg>
-                            </div>
-                            <p>Intervention 7j/7 </p>
-                        </dt>
-                        <dd class="mt-5 text-gray-600 text-start">
-                            Intervention possible sous 24h - 7j/7 avec discrétion garantie. Devis sous 24h.
-                        </dd>
-                    </div>
-                    <div class="max-w-lg mx-auto">
-                        <dt class="font-semibold text-gray-900 flex items-center gap-x-3">
-                            <div class="rounded-full border-2 border-primary bg-primary px-2 py-0.5 text-sm text-white">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                                </svg>
-                            </div>
-                            <span>Aucun acompte</span>
-                        </dt>
-                        <dd class="mt-5 text-gray-600 text-start">
-                            Aucun acompte n’est demandé : vous réglez uniquement après la fin de l’intervention.
-                        </dd>
-                    </div>
-                    <div class="max-w-lg mx-auto">
-                        <dt class="font-semibold text-gray-900 flex items-center gap-x-3">
-                            <div class="rounded-full border-2 border-primary bg-primary px-2 py-0.5 text-sm text-white">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                                </svg>
-                            </div>
-                            <span>Expert certifié</span>
-                        </dt>
-                        <dd class="mt-5 text-gray-600 text-start">
-                            Nous intervenons même dans les situations les plus difficiles et sommes certifiés
-                            <a href="https://www.ecologie.gouv.fr/politiques-publiques/produits-biocides#:~:text=pr%C3%A9sente%20soient%20acceptables.-,Qu'est%2Dce%20qu'un%20produit%20biocide%20%3F,une%20action%20chimique%20ou%20biologique." target="_blank" class="underline-offset-4 underline decoration-dotted">Biocide</a>.
-                        </dd>
                     </div>
                 </div>
             </div>
