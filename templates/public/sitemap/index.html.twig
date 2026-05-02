@@ -1,15 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block robots %}index, follow{% endblock %}
-{% block title %}Sitemap{% endblock %}
-{% block description %}Accédez au plan du site pour découvrir facilement nos pages : services de débarras, nettoyage, contact et plus.{% endblock %}
-{% block url %}{{ path('app_legal_notice') }}{% endblock %}
-
-{% block ogTitle %}ESP - Sitemap{% endblock %}
-{% block ogUrl %}https://esp-rhone-alpes.fr/sitemap{% endblock %}
-{% block ogImage %}{{ asset('medias/site/banniere.webp') }}{% endblock %}
-{% block ogImageAlt %}ESP Débarras et Nettoyage{% endblock %}
-{% block ogDescription %}Accédez au plan du site pour découvrir facilement nos pages : services de débarras, nettoyage, contact et plus.{% endblock %}
+{% block title %}Plan du site - Sitemap{% endblock %}
+{% block description %}Accédez au plan du site ESP pour découvrir facilement toutes nos pages : débarras, nettoyage, syndrome de Diogène, agences et blog.{% endblock %}
+{% block url %}{{ path('app_sitemap') }}{% endblock %}
 
 {% block body %}
     <section class="bg-white py-16 sm:py-24">
@@ -31,7 +24,7 @@
                 <h2 class="text-lg font-semibold text-gray-900 underline underline-offset-4 decoration-dotted">Nos agences</h2>
                 <ul class="list-disc ml-10 space-y-2 mt-4">
                     <li class="text-gray-700"><a href="{{ path('app_city_geneva') }}">Agence Genève</a></li>
-                    <li class="text-gray-700"><a href="https://g.page/r/CcY-mhf8NLfeEBM" target="_blank">Agence Chambéry</a></li>
+                    <li class="text-gray-700"><a href="https://g.page/r/CcY-mhf8NLfeEBM" target="_blank" rel="noopener">Agence Chambéry</a></li>
                 </ul>
             </div>
             <div class="mt-10">

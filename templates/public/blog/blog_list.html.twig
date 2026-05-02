@@ -1,15 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block robots %}index, follow{% endblock %}
-{% block title %}Blog{% endblock %}
+{% block title %}Blog - Conseils débarras, nettoyage et Diogène{% endblock %}
 {% block description %}Découvrez nos articles sur le débarras, le nettoyage et la gestion du syndrome de Diogène. Conseils, astuces et retours d’expérience pour vous guider.{% endblock %}
 {% block url %}{{ path('app_blog') }}{% endblock %}
 
-{% block ogTitle %}ESP - Blog{% endblock %}
-{% block ogUrl %}https://esp-rhone-alpes.fr/blog{% endblock %}
-{% block ogImage %}{{ asset('medias/site/banniere.webp') }}{% endblock %}
-{% block ogImageAlt %}ESP Débarras et Nettoyage{% endblock %}
-{% block ogDescription %}Découvrez nos articles sur le débarras, le nettoyage et la gestion du syndrome de Diogène. Conseils, astuces et retours d’expérience pour vous guider.{% endblock %}
+{% block ogType %}website{% endblock %}
+
+{% block schema %}
+    <script type="application/ld+json" nonce="{{ csp_nonce() }}">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Blog ESP Débarras et Nettoyage",
+        "url": "https://esp-rhone-alpes.fr{{ path('app_blog') }}",
+        "publisher": { "@id": "https://esp-rhone-alpes.fr/#organization" }
+    }
+    </script>
+{% endblock %}
 
 {% block body %}
     <div class="bg-white px-6 py-16 sm:py-24">
@@ -22,12 +29,12 @@
                 {% for post in posts %}
                     <article class="flex flex-col items-start justify-between">
                         <div class="relative w-full">
-                            <img src="{{ asset('medias/blog/'~post.mainPhoto) }}" alt="{{ post.altMainPhoto }}" class="aspect-video w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]">
+                            <img src="{{ asset('medias/blog/'~post.mainPhoto) }}" alt="{{ post.altMainPhoto }}" loading="lazy" width="600" height="400" class="aspect-video w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]">
                             <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
                         </div>
                         <div class="max-w-xl">
                             <div class="mt-8 flex items-center gap-x-4 text-xs">
-                                <time datetime="{{ post.createdAt | date('d F Y') }}" class="text-gray-500">{{ post.createdAt | date('d F Y') | format_date(locale='fr') }}</time>
+                                <time datetime="{{ post.createdAt | date('Y-m-d') }}" class="text-gray-500">{{ post.createdAt | date('d F Y') | format_date(locale='fr') }}</time>
                                 <span class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 cap">{{ post.category.name }}</span>
                             </div>
                             <div class="group relative">
@@ -42,7 +49,7 @@
                                 </p>
                             </div>
                             <div class="relative mt-8 flex items-center gap-x-4">
-                                <img src="{{ asset('medias/site/esp.webp') }}" alt="ESP Logo blog rédacteur" class="size-10 rounded-full bg-gray-100 border-2 border-primary">
+                                <img src="{{ asset('medias/site/esp.webp') }}" alt="Logo ESP Débarras et Nettoyage" loading="lazy" width="40" height="40" class="size-10 rounded-full bg-gray-100 border-2 border-primary">
                                 <div class="text-sm/6">
                                     <h3 class="font-semibold text-gray-900">
                                         <span class="absolute inset-0"></span>

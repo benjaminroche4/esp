@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accès interdit{% endblock %}
+{% block robots %}noindex, nofollow{% endblock %}
+{% block title %}Accès interdit - Erreur 403{% endblock %}
+{% block description %}Vous n'avez pas accès à cette page.{% endblock %}
 
 {% block body %}
     <section class="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-52 lg:px-8">

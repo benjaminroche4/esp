@@ -1,15 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block robots %}noindex, nofollow{% endblock %}
+{% block robots %}index, nofollow{% endblock %}
 {% block title %}Données Personnelles{% endblock %}
-{% block description %}Découvrez notre politique de gestion des données personnelles : collecte, traitement, protection et vos droits en matière de confidentialité.{% endblock %}
+{% block description %}Politique de gestion des données personnelles ESP : collecte, traitement, protection et vos droits en matière de confidentialité (nLPD).{% endblock %}
 {% block url %}{{ path('app_personal_data') }}{% endblock %}
-
-{% block ogTitle %}ESP - Données Personnelles{% endblock %}
-{% block ogUrl %}https://esp-rhone-alpes.fr/donnees-personnelles{% endblock %}
-{% block ogImage %}{{ asset('medias/site/banniere.webp') }}{% endblock %}
-{% block ogImageAlt %}ESP Débarras et Nettoyage{% endblock %}
-{% block ogDescription %}Découvrez notre politique de gestion des données personnelles : collecte, traitement, protection et vos droits en matière de confidentialité.{% endblock %}
 
 
 {% block body %}

@@ -4,53 +4,128 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>ESP - {% block title %}{% endblock %}</title>
-        <meta name="description" content="{% block description %}{% endblock %}">
-        <link rel="icon" type="image/x-icon" href="{{ asset('medias/favicon.ico') }}">
-        <link rel="canonical" href="https://esp-rhone-alpes.fr{% block url %}{% endblock %}" />
-        <meta name="robots" content="{% block robots %}{% endblock %}"/>
+        <title>{% block title %}ESP Débarras et Nettoyage Rhône-Alpes{% endblock %} | ESP</title>
+        <meta name="description" content="{% block description %}Entreprise de débarras, nettoyage et syndrome de Diogène en Rhône-Alpes. Intervention 7j/7, devis sous 24h.{% endblock %}">
+        <meta name="robots" content="{% block robots %}index, follow{% endblock %}"/>
+        <meta name="author" content="ESP Débarras et Nettoyage">
+        <meta name="theme-color" content="#111827">
+        <meta name="format-detection" content="telephone=yes">
 
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+        <link rel="canonical" href="https://esp-rhone-alpes.fr{% block url %}{% endblock %}" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('medias/favicon.ico') }}">
+        <link rel="apple-touch-icon" href="{{ asset('medias/favicon.ico') }}">
+
+        <link rel="preload" as="font" type="font/woff2" href="{{ asset('fonts/montserrat-v31-latin_latin-ext-regular.woff2') }}" crossorigin>
+
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+
+        {# --- Open Graph --- #}
+        <meta property="og:type" content="{% block ogType %}website{% endblock %}">
+        <meta property="og:site_name" content="ESP Débarras et Nettoyage">
+        <meta property="og:locale" content="fr_FR">
+        <meta property="og:title" content="{% block ogTitle %}{{ block('title') }}{% endblock %}">
+        <meta property="og:url" content="{% block ogUrl %}https://esp-rhone-alpes.fr{{ block('url') }}{% endblock %}">
+        <meta property="og:image" content="{% block ogImage %}{{ asset('medias/site/banniere.webp') }}{% endblock %}">
+        <meta property="og:image:alt" content="{% block ogImageAlt %}ESP Débarras et Nettoyage Rhône-Alpes{% endblock %}"/>
+        <meta property="og:description" content="{% block ogDescription %}{{ block('description') }}{% endblock %}">
+
+        {# --- Twitter Card --- #}
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="{{ block('ogTitle') }}">
+        <meta name="twitter:description" content="{{ block('ogDescription') }}">
+        <meta name="twitter:image" content="{{ block('ogImage') }}">
+        <meta name="twitter:image:alt" content="{{ block('ogImageAlt') }}">
+
+        {% block stylesheets %}{% endblock %}
 
         {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
+            {% block importmap %}{{ importmap('app', { 'data-turbo-track': 'reload', nonce: csp_nonce() }) }}{% endblock %}
 
-            <!-- Google Tag Manager -->
-            <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            {# Google Tag Manager (nonced for CSP) #}
+            <script nonce="{{ csp_nonce() }}">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
                         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
                     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                    'https://www.googletagmanager.com/gtm.js?id='+i+dl+'&gtm_nonce='+'{{ csp_nonce() }}';j.setAttribute('nonce','{{ csp_nonce() }}');f.parentNode.insertBefore(j,f);
                 })(window,document,'script','dataLayer','GTM-MK5L23Q9');</script>
-            <!-- End Google Tag Manager -->
-
-            <script type="application/ld+json">
-                {
-                    "@context": "https://schema.org",
-                    "@type": "WebSite",
-                    "name": "ESP Débarras et Nettoyage",
-                    "url": "https://esp-rhone-alpes.fr"
-                }
-            </script>
         {% endblock %}
 
-        <meta property="og:type" content="website">
-        <meta property="og:title" content="{% block ogTitle %}{% endblock %}">
-        <meta property="og:url" content="{% block ogUrl %}{% endblock %}">
-        <meta property="og:image" content="{% block ogImage %}{% endblock %}">
-        <meta property="og:image:alt" content="{% block ogImageAlt %}{% endblock %}"/>
-        <meta property="og:description" content="{% block ogDescription %}{% endblock %}">
+        {# --- Schema.org : LocalBusiness avec note agrégée pour rich snippets --- #}
+        <script type="application/ld+json" nonce="{{ csp_nonce() }}">
+        {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "@id": "https://esp-rhone-alpes.fr/#organization",
+            "name": "ESP Débarras et Nettoyage",
+            "alternateName": "ESP Rhône-Alpes",
+            "url": "https://esp-rhone-alpes.fr",
+            "logo": "https://esp-rhone-alpes.fr{{ asset('medias/logo/esp-debarras-nettoyage-rhone-alpes-logo-header.svg') }}",
+            "image": "https://esp-rhone-alpes.fr{{ asset('medias/site/banniere.webp') }}",
+            "description": "Entreprise spécialisée dans le débarras, le nettoyage et la gestion du syndrome de Diogène en Rhône-Alpes et Suisse.",
+            "telephone": "+33641288848",
+            "email": "contact@esp-rhone-alpes.fr",
+            "priceRange": "€€",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "22 Imp. des Ecorees",
+                "postalCode": "74150",
+                "addressLocality": "Sales",
+                "addressRegion": "Auvergne-Rhône-Alpes",
+                "addressCountry": "FR"
+            },
+            "areaServed": [
+                { "@type": "AdministrativeArea", "name": "Rhône-Alpes" },
+                { "@type": "City", "name": "Lyon" },
+                { "@type": "City", "name": "Grenoble" },
+                { "@type": "City", "name": "Annecy" },
+                { "@type": "City", "name": "Chambéry" },
+                { "@type": "City", "name": "Valence" },
+                { "@type": "City", "name": "Genève" }
+            ],
+            "openingHoursSpecification": [{
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+                "opens": "07:00",
+                "closes": "18:30"
+            }],
+            "sameAs": [
+                "https://www.facebook.com/Espdebarrasnettoyagerhonealpes/",
+                "https://www.instagram.com/esp_debarras_rhone_alpes/"
+            ],
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.7",
+                "reviewCount": "150",
+                "bestRating": "5",
+                "worstRating": "1"
+            }
+        }
+        </script>
+
+        <script type="application/ld+json" nonce="{{ csp_nonce() }}">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "ESP Débarras et Nettoyage",
+            "url": "https://esp-rhone-alpes.fr",
+            "inLanguage": "fr-FR"
+        }
+        </script>
+
+        {% block schema %}{% endblock %}
     </head>
     <body>
         <!-- Google Tag Manager (noscript) -->
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MK5L23Q9"
                           height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- End Google Tag Manager (noscript) -->
-        {% include 'components/header.html.twig' %}
-        <main class="mt-20">
+
+        <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:bg-gray-900 focus:text-white focus:px-4 focus:py-2 focus:rounded">Aller au contenu principal</a>
+
+        <twig:Header />
+        <main id="main" class="mt-20">
             {% block body %}{% endblock %}
         </main>
-        {% include 'components/footer.html.twig' %}
+        <twig:Footer />
     </body>
 </html>

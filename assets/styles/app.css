@@ -1,9 +1,45 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('../fonts/montserrat-v31-latin_latin-ext-300.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/montserrat-v31-latin_latin-ext-regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/montserrat-v31-latin_latin-ext-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/montserrat-v31-latin_latin-ext-600.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/montserrat-v31-latin_latin-ext-700.woff2') format('woff2');
+}
 
 @theme {
   --color-primary: #E3001B;
   --color-primary-dark: #9f0215;
+  --font-sans: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
 }
 
 html {
@@ -11,8 +47,8 @@ html {
   scroll-behavior: smooth;
 }
 
-.cap::first-letter{
-  text-transform:uppercase;
+.cap::first-letter {
+  text-transform: uppercase;
 }
 
 #blog-format > h2 {
@@ -33,14 +69,14 @@ html {
 
 #blog-format > blockquote {
   background: #f1f1f1;
-  padding:1rem;
-  border-radius: 0.50rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
 }
 
 #blog-format > pre {
   background: #f1f1f1;
-  padding:1rem;
-  border-radius: 0.50rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
 }
 
 #blog-format > ul {

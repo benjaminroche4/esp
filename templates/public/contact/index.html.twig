@@ -1,15 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block robots %}index, follow{% endblock %}
-{% block title %}Contactez-nous (Devis sous 24h){% endblock %}
-{% block description %}Contactez-nous pour un devis de débarras, nettoyage ou syndrome de Diogène. Disponible 7j/7 pour particuliers et professionnels, réponse rapide sous 24h.{% endblock %}
+{% block title %}Contactez-nous - Devis gratuit sous 24h{% endblock %}
+{% block description %}Contactez-nous pour un devis gratuit de débarras, nettoyage ou syndrome de Diogène. Disponible 7j/7 pour particuliers et professionnels, réponse sous 24h.{% endblock %}
 {% block url %}{{ path('app_contact') }}{% endblock %}
 
-{% block ogTitle %}ESP - Contactez-nous (Devis sous 24h){% endblock %}
-{% block ogUrl %}https://esp-rhone-alpes.fr/contact{% endblock %}
-{% block ogImage %}{{ asset('medias/site/banniere.webp') }}{% endblock %}
-{% block ogImageAlt %}ESP Débarras et Nettoyage{% endblock %}
-{% block ogDescription %}Contactez-nous pour un devis de débarras, nettoyage ou syndrome de Diogène. Disponible 7j/7 pour particuliers et professionnels, réponse rapide sous 24h.{% endblock %}
+{% block ogType %}website{% endblock %}
+
+{% block schema %}
+    <script type="application/ld+json" nonce="{{ csp_nonce() }}">
+    {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "name": "Contact ESP Débarras et Nettoyage",
+        "url": "https://esp-rhone-alpes.fr{{ path('app_contact') }}",
+        "mainEntity": {
+            "@id": "https://esp-rhone-alpes.fr/#organization",
+            "contactPoint": [
+                {
+                    "@type": "ContactPoint",
+                    "telephone": "+33641288848",
+                    "contactType": "customer service",
+                    "areaServed": "FR",
+                    "availableLanguage": "French"
+                },
+                {
+                    "@type": "ContactPoint",
+                    "telephone": "+41763044227",
+                    "contactType": "customer service",
+                    "areaServed": "CH",
+                    "availableLanguage": "French"
+                }
+            ]
+        }
+    }
+    </script>
+{% endblock %}
 
 {% block body %}
     <section class="bg-white px-6 py-16 sm:py-24 lg:px-8">
@@ -39,7 +64,7 @@
                         <path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z" />
                     </svg>
                 </div>
-                <a href="tel:0641288848" class="text-white text-sm font-medium">contact@esp-rhone-alpes.fr</a>
+                <a href="mailto:contact@esp-rhone-alpes.fr" class="text-white text-sm font-medium">contact@esp-rhone-alpes.fr</a>
             </div>
         </div>
         <div class="relative mt-10 max-w-xl mx-auto">

@@ -1,26 +1,57 @@
 {% extends 'base.html.twig' %}
 
-{% block robots %}index, follow{% endblock %}
 {% block title %}{{ post.title }}{% endblock %}
 {% block description %}{{ post.summary }}{% endblock %}
-{% block url %}/blog/{{ post.slug }}{% endblock %}
+{% block url %}{{ path('app_blog_post', {'slug': post.slug}) }}{% endblock %}
 
-{% block ogTitle %}ESP - {{ post.title }}{% endblock %}
-{% block ogUrl %}https://esp-rhone-alpes.fr/blog/{{ post.slug }}{% endblock %}
-{% block ogImage %}{{ asset('medias/site/banniere.webp') }}{% endblock %}
-{% block ogImageAlt %}ESP Débarras et Nettoyage{% endblock %}
-{% block ogDescription %}{{ post.summary }}{% endblock %}
+{% block ogType %}article{% endblock %}
+{% block ogImage %}{{ asset('medias/blog/'~post.mainPhoto) }}{% endblock %}
+{% block ogImageAlt %}{{ post.altMainPhoto }}{% endblock %}
+
+{% block schema %}
+    <script type="application/ld+json" nonce="{{ csp_nonce() }}">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": "https://esp-rhone-alpes.fr{{ path('app_blog_post', {'slug': post.slug}) }}",
+        "headline": {{ post.title|json_encode|raw }},
+        "description": {{ post.summary|json_encode|raw }},
+        "image": "https://esp-rhone-alpes.fr{{ asset('medias/blog/'~post.mainPhoto) }}",
+        "datePublished": "{{ post.createdAt | date('c') }}",
+        "dateModified": "{{ post.createdAt | date('c') }}",
+        "inLanguage": "fr-FR",
+        "author": {
+            "@type": "Organization",
+            "name": "L'équipe d'ESP",
+            "url": "https://esp-rhone-alpes.fr"
+        },
+        "publisher": { "@id": "https://esp-rhone-alpes.fr/#organization" },
+        "articleSection": {{ post.category.name|json_encode|raw }}
+    }
+    </script>
+    <script type="application/ld+json" nonce="{{ csp_nonce() }}">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://esp-rhone-alpes.fr" },
+            { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://esp-rhone-alpes.fr{{ path('app_blog') }}" },
+            { "@type": "ListItem", "position": 3, "name": {{ post.title|json_encode|raw }}, "item": "https://esp-rhone-alpes.fr{{ path('app_blog_post', {'slug': post.slug}) }}" }
+        ]
+    }
+    </script>
+{% endblock %}
 
 {% block body %}
     <section class="bg-white py-16 sm:py-24">
         <div class="mx-auto max-w-2xl lg:max-w-7xl px-6 lg:px-8">
             <div class="mx-auto lg:mx-0 grid grid-cols-1 lg:grid-cols-3 md:gap-x-12">
                 <div class="md:col-span-2">
-                    <img src="{{ asset('medias/blog/'~post.mainPhoto) }}" alt="{{ post.altMainPhoto }}" class="object-cover w-full aspect-video rounded-3xl mb-6"/>
-                    <p class="text-xs font-semibold leading-7 text-primary tracking-wide">Publié le  <time datetime="{{ post.createdAt | date('d F Y') }}">{{ post.createdAt | date('d F Y') | format_date(locale='fr') }}</time></p>
+                    <img src="{{ asset('medias/blog/'~post.mainPhoto) }}" alt="{{ post.altMainPhoto }}" fetchpriority="high" width="1200" height="675" class="object-cover w-full aspect-video rounded-3xl mb-6"/>
+                    <p class="text-xs font-semibold leading-7 text-primary tracking-wide">Publié le <time datetime="{{ post.createdAt | date('Y-m-d') }}">{{ post.createdAt | date('d F Y') | format_date(locale='fr') }}</time></p>
                     <h1 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl text-pretty cap">{{ post.title }}</h1>
                     <div class="flex items-center gap-3 mt-7">
-                        <img src="{{ asset('medias/site/esp.webp') }}"  alt="ESP Logo blog rédacteur" class="size-8 rounded-full bg-gray-100 border-2 border-primary">
+                        <img src="{{ asset('medias/site/esp.webp') }}" alt="Logo ESP Débarras et Nettoyage" loading="lazy" width="32" height="32" class="size-8 rounded-full bg-gray-100 border-2 border-primary">
                         <p class="text-gray-900 font-semibold text-sm">Rédigé par l'équipe d'ESP</p>
                     </div>
                     <div class="text-base mt-12 text-gray-900 cap" id="blog-format">
@@ -33,7 +64,7 @@
                 </div>
                 <aside class="mt-10 lg:mt-0">
                     <div class="bg-gray-50 border border-gray-100 p-8 lg:sticky lg:top-32 rounded-2xl">
-                        <h4 class="font-semibold text-lg text-center font-primary">Vous avez un besoin ?</h4>
+                        <h2 class="font-semibold text-lg text-center font-primary">Vous avez un besoin ?</h2>
                         <p class="text-center mt-2">Nous vous rappelons sous 2 heures pour répondre à vos questions.</p>
                         <div class="mx-auto w-full mt-5">
                             <a href="{{ path('app_contact') }}" class="text-center block text-sm font-semibold leading-6 text-white bg-primary px-4 py-2.5 rounded-full transition duration-100 hover:bg-white hover:text-primary border border-primary">Contactez-nous</a>
