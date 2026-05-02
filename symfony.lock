@@ -44,6 +44,30 @@
             "ref": "b131e6cbfe1b898a508987851963fff485986285"
         }
     },
+    "friendsofphp/php-cs-fixer": {
+        "version": "3.95",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "3.39",
+            "ref": "97aaf9026490db73b86c23d49e5774bc89d2b232"
+        },
+        "files": [
+            ".php-cs-fixer.dist.php"
+        ]
+    },
+    "phpstan/phpstan": {
+        "version": "2.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "1.0",
+            "ref": "5e490cc197fb6bb1ae22e5abbc531ddc633b6767"
+        },
+        "files": [
+            "phpstan.dist.neon"
+        ]
+    },
     "phpunit/phpunit": {
         "version": "9.6",
         "recipe": {
@@ -316,6 +340,9 @@
             "assets/icons/symfony.svg"
         ]
     },
+    "symfony/ux-toolkit": {
+        "version": "v3.0.0"
+    },
     "symfony/ux-turbo": {
         "version": "2.22",
         "recipe": {
@@ -389,6 +416,15 @@
         "files": [
             "config/packages/symfonycasts_tailwind.yaml"
         ]
+    },
+    "tales-from-a-dev/twig-tailwind-extra": {
+        "version": "1.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "0.2",
+            "ref": "7243ab070ed66198eb82c026684e9b9773e7b64a"
+        }
     },
     "twig/extra-bundle": {
         "version": "v3.18.0"

@@ -37,9 +37,33 @@
 }
 
 @theme {
+  --font-sans: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+
+  /* Brand */
   --color-primary: #E3001B;
   --color-primary-dark: #9f0215;
-  --font-sans: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+  --color-primary-foreground: #ffffff;
+
+  /* Surfaces */
+  --color-background: #ffffff;
+  --color-foreground: #111827;          /* gray-900 */
+
+  /* Secondary (neutral fills) */
+  --color-secondary: #f3f4f6;            /* gray-100 */
+  --color-secondary-foreground: #111827;
+
+  /* Muted (subtle backgrounds + helper text) */
+  --color-muted: #f3f4f6;
+  --color-muted-foreground: #6b7280;     /* gray-500 */
+
+  /* Destructive (errors / dangerous actions) */
+  --color-destructive: #dc2626;          /* red-600 */
+  --color-destructive-foreground: #ffffff;
+
+  /* Borders / inputs / focus ring */
+  --color-border: #e5e7eb;               /* gray-200 */
+  --color-input: #e5e7eb;
+  --color-ring: #E3001B;                 /* focus ring = brand */
 }
 
 html {
