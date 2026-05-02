@@ -43,20 +43,25 @@ final class CspListener
 
     private function applyHeaders(Response $response, string $nonce): void
     {
+        // "Marketing-friendly" CSP: nonce-based protection against XSS on inline scripts,
+        // but tolerant of GTM-loaded third-party tools (chat, reviews, retargeting pixels…).
+        // `'strict-dynamic'` lets nonced scripts (GTM) load further scripts without listing every domain;
+        // `https:` is the fallback for browsers ignoring `'strict-dynamic'`.
         $csp = sprintf(
             "default-src 'self'; "
-            . "script-src 'self' 'nonce-%1\$s' https://www.googletagmanager.com https://www.google-analytics.com; "
-            . "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
-            . "style-src-attr 'unsafe-inline'; "
-            . "font-src 'self' data:; "
-            . "img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com; "
-            . "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com; "
-            . 'frame-src https://www.googletagmanager.com; '
-            . "object-src 'none'; "
-            . "base-uri 'self'; "
-            . "form-action 'self'; "
-            . "frame-ancestors 'none'; "
-            . 'upgrade-insecure-requests',
+            ."script-src 'self' 'nonce-%1\$s' 'strict-dynamic' https: 'unsafe-inline'; "
+            ."style-src 'self' 'unsafe-inline' https:; "
+            ."style-src-attr 'unsafe-inline'; "
+            ."font-src 'self' data: https:; "
+            ."img-src 'self' data: https:; "
+            ."media-src 'self' https:; "
+            ."connect-src 'self' https:; "
+            ."frame-src https:; "
+            ."object-src 'none'; "
+            ."base-uri 'self'; "
+            ."form-action 'self'; "
+            ."frame-ancestors 'none'; "
+            .'upgrade-insecure-requests',
             $nonce,
         );
 

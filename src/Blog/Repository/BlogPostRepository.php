@@ -40,7 +40,7 @@ class BlogPostRepository extends ServiceEntityRepository
         return $this->publishedQueryBuilder()
             ->setMaxResults($limit)
             ->getQuery()
-            ->enableResultCache(self::RESULT_CACHE_TTL, 'blog.published.last_'.$limit)
+            ->enableResultCache(self::RESULT_CACHE_TTL, 'blog.published.last_' . $limit)
             ->getResult();
     }
 
@@ -50,7 +50,7 @@ class BlogPostRepository extends ServiceEntityRepository
             ->andWhere('b.slug = :slug')
             ->setParameter('slug', $slug)
             ->getQuery()
-            ->enableResultCache(self::RESULT_CACHE_TTL, 'blog.published.slug.'.$slug)
+            ->enableResultCache(self::RESULT_CACHE_TTL, 'blog.published.slug.' . $slug)
             ->getOneOrNullResult();
     }
 
