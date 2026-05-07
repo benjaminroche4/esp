@@ -18,7 +18,7 @@
         "description": {{ post.summary|json_encode|raw }},
         "image": "https://esp-rhone-alpes.fr{{ asset('medias/blog/'~post.mainPhoto) }}",
         "datePublished": "{{ post.createdAt | date('c') }}",
-        "dateModified": "{{ post.createdAt | date('c') }}",
+        "dateModified": "{{ (post.updatedAt ?? post.createdAt) | date('c') }}",
         "inLanguage": "fr-FR",
         "author": {
             "@type": "Organization",

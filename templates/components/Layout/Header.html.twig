@@ -1,0 +1,142 @@
+{% set _route = app.request.attributes.get('_route') %}
+{% set nav_items = [
+    { route: 'app_home',                 label: 'Nos prestations' },
+    { route: 'app_service_intervention', label: 'Nos interventions' },
+    { route: 'app_blog',                 label: 'Blog',              prefix: true }
+] %}
+
+<div data-controller="header">
+
+    <header class="border-b border-gray-200 bg-white">
+        <nav class="mx-auto flex max-w-7xl items-center justify-between gap-x-4 px-4 py-4 lg:px-8 lg:py-5"
+             aria-label="Navigation principale">
+            <div class="flex items-center gap-x-6">
+                {# Logo #}
+                <a href="{{ path('app_home') }}"
+                   class="flex items-center -m-1.5 p-1.5 rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                   aria-label="ESP Débarras et Nettoyage Rhône-Alpes — Accueil">
+                    <img class="h-7 w-auto"
+                         src="{{ asset('medias/logo/esp-debarras-nettoyage-rhone-alpes-logo-header.svg') }}"
+                         alt="" width="120" height="32">
+                    <span class="sr-only">ESP Débarras et Nettoyage Rhône-Alpes</span>
+                </a>
+                {# Desktop nav #}
+                <ul class="flex items-center gap-x-4 text-sm font-medium max-lg:hidden" role="list">
+                    {% for item in nav_items %}
+                        {% set is_current = item.prefix|default(false) ? _route starts with item.route : _route == item.route %}
+                        <li>
+                            <a href="{{ path(item.route) }}"
+                               class="rounded-md px-3 py-2 text-gray-700 hover:bg-accent/10 hover:text-accent aria-[current=page]:bg-accent/10 aria-[current=page]:text-accent aria-[current=page]:font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                               {% if is_current %}aria-current="page"{% endif %}>
+                                {{ item.label }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            {# Right side actions #}
+            <div class="flex items-center gap-x-3 sm:gap-x-5">
+                {# Desktop CTA #}
+                <twig:Button as="a" href="{{ path('app_contact') }}" size="lg" class="max-lg:hidden">
+                    Devis gratuit
+                </twig:Button>
+
+                {# Mobile hamburger #}
+                <twig:Button variant="ghost" size="icon-lg"
+                             class="lg:hidden"
+                             data-action="header#open"
+                             data-header-target="toggle"
+                             aria-controls="header-menu"
+                             aria-expanded="false">
+                    <span class="sr-only">Ouvrir le menu</span>
+                    <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+                    </svg>
+                </twig:Button>
+            </div>
+        </nav>
+    </header>
+
+    {# Mobile menu — sibling of <header> pour éviter de créer un stacking context. #}
+    <div id="header-menu"
+         class="hidden fixed inset-0 z-50 lg:hidden"
+         data-header-target="panel"
+         role="dialog"
+         aria-modal="true"
+         aria-label="Menu de navigation">
+
+        {# Backdrop #}
+        <div class="absolute inset-0 bg-gray-900/50 opacity-0 transition-opacity duration-200 ease-out"
+             data-header-target="backdrop"
+             data-action="click->header#close"
+             aria-hidden="true"></div>
+
+        {# Panel — slides in from the right #}
+        <div class="absolute inset-y-0 right-0 flex w-full max-w-sm translate-x-full flex-col bg-white shadow-xl transition-transform duration-300 ease-out"
+             data-header-target="drawer">
+            <div class="flex items-center justify-between gap-x-4 px-6 py-4 border-b border-gray-100">
+                <a href="{{ path('app_home') }}" class="flex items-center -m-1.5 p-1.5"
+                   aria-label="Accueil">
+                    <img class="h-8 w-auto"
+                         src="{{ asset('medias/logo/esp-debarras-nettoyage-rhone-alpes-logo-header.svg') }}"
+                         alt="" width="120" height="32">
+                    <span class="sr-only">ESP Débarras et Nettoyage</span>
+                </a>
+                <twig:Button variant="ghost" size="icon-lg"
+                             data-action="header#close"
+                             data-header-target="closeButton">
+                    <span class="sr-only">Fermer le menu</span>
+                    <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
+                    </svg>
+                </twig:Button>
+            </div>
+
+            <div class="flex-1 overflow-y-auto px-6 pt-4 pb-6">
+                <ul class="space-y-1 text-lg font-semibold" role="list">
+                    {% for item in nav_items %}
+                        {% set is_current = item.prefix|default(false) ? _route starts with item.route : _route == item.route %}
+                        <li>
+                            <a href="{{ path(item.route) }}"
+                               class="block rounded-lg px-3 py-2.5 text-gray-900 hover:bg-accent/10 hover:text-accent aria-[current=page]:bg-accent/10 aria-[current=page]:text-accent aria-[current=page]:font-semibold"
+                               data-action="header#close"
+                               {% if is_current %}aria-current="page"{% endif %}>
+                                {{ item.label }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                <div class="mt-6">
+                    <twig:Button as="a" href="{{ path('app_contact') }}" size="lg"
+                                 class="w-full h-12 text-base"
+                                 data-action="header#close">
+                        Contactez-nous
+                    </twig:Button>
+                </div>
+
+                <div class="mt-8 border-t border-gray-950/10 pt-6">
+                    <div class="flex items-center gap-x-2 text-sm text-gray-500">
+                        {{ ux_icon('heroicons:clock-16-solid', {class: 'size-4 shrink-0'}) }}
+                        <p>Disponible 7j/7 · Devis sous 24h</p>
+                    </div>
+                    <ul class="mt-2 divide-y divide-gray-950/5" role="list">
+                        <li>
+                            <a href="tel:+33641288848" class="flex items-center gap-x-3 py-3 text-base font-semibold text-gray-900 hover:text-accent">
+                                {{ ux_icon('twemoji:flag-for-flag-france', {class: 'size-5 shrink-0'}) }}
+                                <span class="tabular-nums tracking-tight">+33 6 41 28 88 48</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tel:+41763044227" class="flex items-center gap-x-3 py-3 text-base font-semibold text-gray-900 hover:text-accent">
+                                {{ ux_icon('twemoji:flag-for-flag-switzerland', {class: 'size-5 shrink-0'}) }}
+                                <span class="tabular-nums tracking-tight">+41 76 304 42 27</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

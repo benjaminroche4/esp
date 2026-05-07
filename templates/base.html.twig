@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="{% block html_lang %}fr-FR{% endblock %}">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,8 +12,14 @@
         <meta name="format-detection" content="telephone=yes">
 
         <link rel="canonical" href="https://esp-rhone-alpes.fr{% block url %}{% endblock %}" />
+        {% block hreflang %}
+            <link rel="alternate" hreflang="fr-FR" href="https://esp-rhone-alpes.fr{{ block('url') }}" />
+            <link rel="alternate" hreflang="fr-CH" href="https://esp-rhone-alpes.fr{{ path('app_city_geneva') }}" />
+            <link rel="alternate" hreflang="x-default" href="https://esp-rhone-alpes.fr{{ block('url') }}" />
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('medias/favicon.ico') }}">
         <link rel="apple-touch-icon" href="{{ asset('medias/favicon.ico') }}">
+        <link rel="manifest" href="{{ asset('manifest.webmanifest') }}">
 
         <link rel="preload" as="font" type="font/woff2" href="{{ asset('fonts/montserrat-v31-latin_latin-ext-regular.woff2') }}" crossorigin>
 
@@ -23,7 +29,8 @@
         {# --- Open Graph --- #}
         <meta property="og:type" content="{% block ogType %}website{% endblock %}">
         <meta property="og:site_name" content="ESP Débarras et Nettoyage">
-        <meta property="og:locale" content="fr_FR">
+        <meta property="og:locale" content="{% block og_locale %}fr_FR{% endblock %}">
+        {% block og_locale_alternate %}<meta property="og:locale:alternate" content="fr_CH">{% endblock %}
         <meta property="og:title" content="{% block ogTitle %}{{ block('title') }}{% endblock %}">
         <meta property="og:url" content="{% block ogUrl %}https://esp-rhone-alpes.fr{{ block('url') }}{% endblock %}">
         <meta property="og:image" content="{% block ogImage %}{{ asset('medias/site/banniere.webp') }}{% endblock %}">
@@ -74,13 +81,12 @@
                 "addressCountry": "FR"
             },
             "areaServed": [
-                { "@type": "AdministrativeArea", "name": "Rhône-Alpes" },
+                { "@type": "AdministrativeArea", "name": "Auvergne-Rhône-Alpes" },
                 { "@type": "City", "name": "Lyon" },
                 { "@type": "City", "name": "Grenoble" },
                 { "@type": "City", "name": "Annecy" },
                 { "@type": "City", "name": "Chambéry" },
-                { "@type": "City", "name": "Valence" },
-                { "@type": "City", "name": "Genève" }
+                { "@type": "City", "name": "Valence" }
             ],
             "openingHoursSpecification": [{
                 "@type": "OpeningHoursSpecification",
@@ -122,10 +128,10 @@
 
         <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:bg-gray-900 focus:text-white focus:px-4 focus:py-2 focus:rounded">Aller au contenu principal</a>
 
-        <twig:Header />
+        <twig:Layout:Header />
         <main id="main" class="mt-20">
             {% block body %}{% endblock %}
         </main>
-        <twig:Footer />
+        <twig:Layout:Footer />
     </body>
 </html>

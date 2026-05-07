@@ -40,9 +40,10 @@
   --font-sans: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
 
   /* Brand */
-  --color-primary: #E3001B;
-  --color-primary-dark: #9f0215;
+  --color-primary: #111828;
   --color-primary-foreground: #ffffff;
+  --color-accent: #E1071D;
+  --color-accent-foreground: #ffffff;
 
   /* Surfaces */
   --color-background: #ffffff;

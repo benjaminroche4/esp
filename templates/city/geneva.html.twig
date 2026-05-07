@@ -4,13 +4,41 @@
 {% block description %}Entreprise de débarras à Genève : intervention rapide et discrète dans tout le canton de Genève. Enlèvement d’encombrants, nettoyage complet, service 7j/7.{% endblock %}
 {% block url %}{{ path('app_city_geneva') }}{% endblock %}
 
+{% block html_lang %}fr-CH{% endblock %}
+{% block og_locale %}fr_CH{% endblock %}
+{% block og_locale_alternate %}<meta property="og:locale:alternate" content="fr_FR">{% endblock %}
+
 {% block schema %}
+    <script type="application/ld+json" nonce="{{ csp_nonce() }}">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "@id": "https://esp-rhone-alpes.fr{{ path('app_city_geneva') }}#localbusiness-geneva",
+        "name": "ESP Débarras et Nettoyage - Agence Genève",
+        "url": "https://esp-rhone-alpes.fr{{ path('app_city_geneva') }}",
+        "image": "https://esp-rhone-alpes.fr{{ asset('medias/site/esp-geneva.webp') }}",
+        "telephone": "+41763044227",
+        "priceRange": "CHF",
+        "parentOrganization": { "@id": "https://esp-rhone-alpes.fr/#organization" },
+        "areaServed": {
+            "@type": "City",
+            "name": "Genève",
+            "address": { "@type": "PostalAddress", "addressCountry": "CH", "addressRegion": "GE" }
+        },
+        "openingHoursSpecification": [{
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+            "opens": "07:00",
+            "closes": "18:30"
+        }]
+    }
+    </script>
     <script type="application/ld+json" nonce="{{ csp_nonce() }}">
     {
         "@context": "https://schema.org",
         "@type": "Service",
         "serviceType": "Débarras, nettoyage et syndrome de Diogène à Genève",
-        "provider": { "@id": "https://esp-rhone-alpes.fr/#organization" },
+        "provider": { "@id": "https://esp-rhone-alpes.fr{{ path('app_city_geneva') }}#localbusiness-geneva" },
         "areaServed": {
             "@type": "City",
             "name": "Genève",
@@ -328,5 +356,5 @@
             </div>
         </div>
     </section>
-    <twig:CtaFooter />
+    <twig:Section:CtaFooter />
 {% endblock %}

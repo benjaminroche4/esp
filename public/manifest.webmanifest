@@ -1,0 +1,25 @@
+{
+    "name": "ESP Débarras et Nettoyage Rhône-Alpes",
+    "short_name": "ESP",
+    "description": "Entreprise de débarras, nettoyage et syndrome de Diogène en Rhône-Alpes et à Genève. Intervention 7j/7, devis sous 24h.",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "lang": "fr-FR",
+    "dir": "ltr",
+    "background_color": "#ffffff",
+    "theme_color": "#111827",
+    "icons": [
+        {
+            "src": "/medias/favicon.ico",
+            "sizes": "any",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "/medias/logo/esp-debarras-nettoyage-rhone-alpes-logo-header.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any"
+        }
+    ]
+}

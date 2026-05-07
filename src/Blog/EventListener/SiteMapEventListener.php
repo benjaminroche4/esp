@@ -32,7 +32,7 @@ final readonly class SiteMapEventListener
                 ),
             );
             $url->setChangefreq(UrlConcrete::CHANGEFREQ_MONTHLY);
-            $url->setLastmod($post->getCreatedAt());
+            $url->setLastmod($post->getUpdatedAt() ?? $post->getCreatedAt());
 
             $urlContainer->addUrl($url, 'blog');
         }
