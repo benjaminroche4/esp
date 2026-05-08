@@ -27,31 +27,23 @@
 
 {% block body %}
     <section class="relative bg-white">
-        <div class="mx-auto max-w-7xl lg:grid lg:grid-cols-12 lg:gap-x-8 lg:px-8">
-            <div class="px-6 pb-24 pt-10 sm:pb-32 lg:col-span-7 lg:px-0 lg:pb-24 lg:pt-24 xl:col-span-6">
-                <div class="mx-auto max-w-2xl lg:mx-0">
-                    <twig:Button variant="default">Button</twig:Button>
-
-                    <h1 class="text-pretty text-4xl sm:text-6xl tracking-tight font-bold text-gray-900 sm:mt-5">Entreprise de débarras et nettoyage express</h1>
-                    <p class="mt-8 text-pretty text-lg text-gray-700">Disponible 7j/7 dans toute la région Rhône-Alpes, ESP débarras et nettoyage intervient rapidement, avec discrétion et professionnalisme.</p>
-                    <div class="mt-10 flex sm:flex-row flex-col w-auto sm:items-center gap-x-6 gap-y-12">
-                        <div class="w-auto">
-                            <a href="{{ path('app_contact') }}" class="text-sm font-semibold text-white bg-gray-900 px-4 py-3 rounded-full border border-gray-900 hover:bg-white hover:text-gray-900 transition duration-100">Demander un devis</a>
-                        </div>
-                        <div class="gap-x-2 items-center flex">
-                            {{ ux_icon('pepicons-print:star-filled', {class: 'w-auto h-8 text-yellow-500'}) }}
-                            <p class="font-semibold"><span class="text-lg">4.7/5 </span>sur plus de <a href="https://g.co/kgs/Pdqw8Bd" target="_blank" rel="noopener" class="underline-offset-4 underline">50 avis</a> Google</p>
-                        </div>
-                    </div>
+        <div class="mx-auto max-w-7xl px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-12 pt-10 pb-16 sm:pt-16 sm:pb-24 lg:pt-24 lg:pb-28 items-center">
+            <div class="max-w-2xl lg:max-w-none">
+                <h1 class="text-pretty text-4xl sm:text-5xl xl:text-6xl tracking-tight font-bold text-gray-900">Entreprise de débarras et nettoyage express</h1>
+                <p class="mt-6 text-pretty text-lg text-gray-700">Disponible 7j/7 dans toute la région Rhône-Alpes, ESP débarras et nettoyage intervient rapidement, avec discrétion et professionnalisme.</p>
+                <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+                    <a href="#services" class="text-sm font-semibold text-white bg-gray-900 px-5 py-3 rounded-full border border-gray-900 hover:bg-white hover:text-gray-900 transition duration-100">Découvrir nos services</a>
+                    <a href="tel:+33641288848" class="text-sm font-semibold text-gray-900 inline-flex items-center gap-2 hover:text-accent transition">
+                        {{ ux_icon('pepicons-print:phone', {class: 'size-5'}) }} +33 6 41 28 88 48
+                    </a>
+                </div>
+                <div class="mt-8 flex items-center gap-x-2">
+                    {{ ux_icon('pepicons-print:star-filled', {class: 'w-auto h-8 text-yellow-500'}) }}
+                    <p class="font-semibold"><span class="text-lg">4.7/5 </span>sur plus de <a href="https://g.co/kgs/Pdqw8Bd" target="_blank" rel="noopener" class="underline-offset-4 underline">50 avis</a> Google</p>
                 </div>
             </div>
-            <div class="relative lg:col-span-5 lg:-mr-8 xl:absolute xl:inset-0 xl:left-1/2 xl:mr-0">
-                <video class="top-0 left-0 w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" aria-label="Vidéo de présentation ESP Débarras et Nettoyage Rhône-Alpes">
-                    <source src="{{ asset('medias/video/esp-home.webm') }}" type="video/webm">
-                    <source src="{{ asset('medias/video/esp-home.mp4') }}" type="video/mp4">
-                    Votre navigateur ne prend pas en charge les vidéos.
-                </video>
-                <div class="absolute top-0 left-0 w-full h-full bg-gray-900 opacity-20"></div>
+            <div class="w-full lg:max-w-xl lg:ml-auto">
+                <twig:Hero:QuoteFlow form="{{ quoteForm }}" />
             </div>
         </div>
     </section>
@@ -125,7 +117,7 @@
             </dl>
         </div>
     </section>
-    <section class="bg-white px-6 py-24 sm:py-32 lg:px-8 max-w-7xl mx-auto">
+    <section id="services" class="bg-white px-6 py-24 sm:py-32 lg:px-8 max-w-7xl mx-auto scroll-mt-24">
         <div class="mx-auto max-w-2xl text-center">
             <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Nos domaines d'interventions</h2>
             <p class="mt-8 text-pretty text-lg text-gray-700">Nous intervenons auprès des professionnels et des particuliers, partout en Rhône-Alpes <i class="text-sm">(Lyon, Valence, Grenoble, Annecy, Sallanches…)</i>.</p>
@@ -162,6 +154,22 @@
                 </div>
             </li>
         </ul>
+    </section>
+    <section class="bg-gray-50 py-20 sm:py-28">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="mx-auto max-w-2xl text-center mb-12">
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Découvrez ESP en vidéo</h2>
+                <p class="mt-4 text-pretty text-lg text-gray-700">Particuliers, professionnels et collectivités nous font confiance partout en Rhône-Alpes.</p>
+            </div>
+            <div class="relative mx-auto max-w-5xl rounded-2xl overflow-hidden shadow-xl ring-1 ring-gray-900/10">
+                <video class="w-full h-auto object-cover aspect-video" autoplay loop muted playsinline preload="metadata" aria-label="Vidéo de présentation ESP Débarras et Nettoyage Rhône-Alpes">
+                    <source src="{{ asset('medias/video/esp-home.webm') }}" type="video/webm">
+                    <source src="{{ asset('medias/video/esp-home.mp4') }}" type="video/mp4">
+                    Votre navigateur ne prend pas en charge les vidéos.
+                </video>
+                <div class="absolute inset-0 bg-gray-900/10 pointer-events-none"></div>
+            </div>
+        </div>
     </section>
     <section class="relative bg-white">
         <div class="mx-auto grid max-w-7xl lg:grid-cols-2">

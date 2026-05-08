@@ -1,0 +1,153 @@
+{# @prop form FormView - the current step form (from $flow->getStepForm()) #}
+{%- props form -%}
+
+{%- set isContactStep = form.contact is defined -%}
+{%- set step = isContactStep ? form.contact : form.service -%}
+{%- set currentStepIndex = isContactStep ? 2 : 1 -%}
+{%- set inputClass = 'block w-full rounded-md bg-white px-3.5 py-2.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray-900' -%}
+{%- set labelClass = 'block text-sm/6 font-semibold text-gray-900' -%}
+
+<div
+    class="bg-white rounded-2xl shadow-xl ring-1 ring-gray-200 p-6 lg:p-8"
+    data-controller="quote-flow"
+    data-quote-flow-current-step-value="{{ currentStepIndex }}"
+>
+    <div class="flex items-baseline justify-between gap-4">
+        <h2 class="text-xl font-bold tracking-tight text-gray-900">Devis gratuit en moins de 30&nbsp;sec</h2>
+        <span class="text-xs font-semibold text-gray-500 whitespace-nowrap">Étape {{ currentStepIndex }}/2</span>
+    </div>
+    <p class="mt-1 text-sm text-gray-600">Réponse sous 24&nbsp;h, sans engagement.</p>
+
+    {# Stepper visuel #}
+    <div class="mt-5 flex items-center gap-2" aria-hidden="true">
+        <div class="h-1.5 flex-1 rounded-full bg-accent"></div>
+        <div class="h-1.5 flex-1 rounded-full {{ isContactStep ? 'bg-accent' : 'bg-gray-200' }}"></div>
+    </div>
+
+    {{ form_start(form, {'attr': {'action': path('app_quote_flow'), 'class': 'mt-6 space-y-5', 'data-quote-flow-target': 'form', 'data-turbo': 'false'}}) }}
+        {{ form_errors(form) }}
+
+        {% for message in app.flashes('error') %}
+            <div class="rounded-md bg-red-50 p-3 border border-red-200 text-sm text-red-800">{{ message }}</div>
+        {% endfor %}
+
+        {% if not isContactStep %}
+            {# === STEP 1 : Service === #}
+            <fieldset>
+                <legend class="{{ labelClass }}">Quel est votre besoin&nbsp;?</legend>
+                <div class="mt-2 grid grid-cols-3 gap-2">
+                    {% for child in step.serviceType %}
+                        <label class="relative flex flex-col items-center justify-center rounded-lg border border-gray-200 bg-white p-3 cursor-pointer hover:border-accent has-[:checked]:border-accent has-[:checked]:bg-accent/5 has-[:checked]:ring-1 has-[:checked]:ring-accent transition">
+                            {{ form_widget(child, {'attr': {'class': 'sr-only peer'}}) }}
+                            <span class="text-sm font-semibold text-gray-900 peer-checked:text-accent">{{ child.vars.label }}</span>
+                        </label>
+                    {% endfor %}
+                </div>
+                {{ form_errors(step.serviceType) }}
+            </fieldset>
+
+            <fieldset>
+                <legend class="{{ labelClass }}">Type de bien</legend>
+                <div class="mt-2 grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    {% for child in step.propertyType %}
+                        <label class="relative flex items-center justify-center rounded-lg border border-gray-200 bg-white px-3 py-2 cursor-pointer hover:border-accent has-[:checked]:border-accent has-[:checked]:bg-accent/5 has-[:checked]:ring-1 has-[:checked]:ring-accent transition text-xs sm:text-sm font-medium">
+                            {{ form_widget(child, {'attr': {'class': 'sr-only peer'}}) }}
+                            <span class="text-gray-900 peer-checked:text-accent text-center">{{ child.vars.label }}</span>
+                        </label>
+                    {% endfor %}
+                </div>
+                {{ form_errors(step.propertyType) }}
+            </fieldset>
+
+            <div class="grid grid-cols-3 gap-3">
+                <div class="col-span-2">
+                    {{ form_label(step.city, 'Ville', {'label_attr': {'class': labelClass}}) }}
+                    <div class="mt-1.5">
+                        {{ form_widget(step.city, {'attr': {'class': inputClass, 'placeholder': 'Lyon', 'data-quote-flow-target': 'firstField', 'autocomplete': 'address-level2'}}) }}
+                    </div>
+                    {{ form_errors(step.city) }}
+                </div>
+                <div>
+                    {{ form_label(step.zipCode, 'Code postal', {'label_attr': {'class': labelClass}}) }}
+                    <div class="mt-1.5">
+                        {{ form_widget(step.zipCode, {'attr': {'class': inputClass, 'placeholder': '69001', 'inputmode': 'numeric', 'autocomplete': 'postal-code'}}) }}
+                    </div>
+                    {{ form_errors(step.zipCode) }}
+                </div>
+            </div>
+        {% else %}
+            {# === STEP 2 : Coordonnées === #}
+            <div class="grid grid-cols-2 gap-3">
+                <div>
+                    {{ form_label(step.firstName, 'Prénom', {'label_attr': {'class': labelClass}}) }}
+                    <div class="mt-1.5">
+                        {{ form_widget(step.firstName, {'attr': {'class': inputClass, 'data-quote-flow-target': 'firstField', 'autocomplete': 'given-name'}}) }}
+                    </div>
+                    {{ form_errors(step.firstName) }}
+                </div>
+                <div>
+                    {{ form_label(step.lastName, 'Nom', {'label_attr': {'class': labelClass}}) }}
+                    <div class="mt-1.5">
+                        {{ form_widget(step.lastName, {'attr': {'class': inputClass, 'autocomplete': 'family-name'}}) }}
+                    </div>
+                    {{ form_errors(step.lastName) }}
+                </div>
+            </div>
+
+            <div>
+                {{ form_label(step.email, 'Email', {'label_attr': {'class': labelClass}}) }}
+                <div class="mt-1.5">
+                    {{ form_widget(step.email, {'attr': {'class': inputClass, 'placeholder': 'vous@exemple.fr', 'autocomplete': 'email'}}) }}
+                </div>
+                {{ form_errors(step.email) }}
+            </div>
+
+            <div>
+                {{ form_label(step.phoneNumber, 'Téléphone', {'label_attr': {'class': labelClass}}) }}
+                <div class="mt-1.5">
+                    {{ form_widget(step.phoneNumber, {'attr': {'class': inputClass, 'placeholder': '06 12 34 56 78', 'inputmode': 'tel', 'autocomplete': 'tel'}}) }}
+                </div>
+                {{ form_errors(step.phoneNumber) }}
+            </div>
+
+            <div>
+                <div class="flex justify-between items-center">
+                    {{ form_label(step.message, 'Précisions', {'label_attr': {'class': labelClass}}) }}
+                    <span class="text-xs text-gray-400">Optionnel</span>
+                </div>
+                <div class="mt-1.5">
+                    {{ form_widget(step.message, {'attr': {'class': inputClass, 'rows': 3, 'placeholder': 'Surface, accès, urgence…'}}) }}
+                </div>
+                {{ form_errors(step.message) }}
+            </div>
+
+            <label class="flex items-start gap-2 text-xs text-gray-600 cursor-pointer">
+                {{ form_widget(step.consent, {'attr': {'class': 'mt-0.5 size-4 rounded border-gray-300 text-accent focus:ring-accent'}}) }}
+                <span>J'accepte que mes données soient utilisées pour traiter ma demande de devis. <a href="{{ path('app_personal_data') }}" class="underline underline-offset-2 hover:text-accent">Politique de confidentialité</a>.</span>
+            </label>
+            {{ form_errors(step.consent) }}
+
+            <div class="hidden" aria-hidden="true">
+                {{ form_label(step.website, 'Ne pas remplir') }}
+                {{ form_widget(step.website, {'attr': {'tabindex': '-1', 'autocomplete': 'off'}}) }}
+            </div>
+        {% endif %}
+
+        {# === Navigator buttons === #}
+        <div class="flex items-center justify-between gap-3 pt-2">
+            {% if form.navigator.previous is defined %}
+                {{ form_widget(form.navigator.previous, {'label': '← Précédent', 'attr': {'class': 'inline-flex items-center justify-center rounded-full px-4 py-2.5 text-sm font-semibold text-gray-700 bg-gray-100 hover:bg-gray-200 transition cursor-pointer'}}) }}
+            {% else %}
+                <span></span>
+            {% endif %}
+
+            {% if form.navigator.next is defined %}
+                {{ form_widget(form.navigator.next, {'label': 'Suivant →', 'attr': {'class': 'inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold text-white bg-gray-900 hover:bg-accent border border-gray-900 hover:border-accent transition cursor-pointer ml-auto'}}) }}
+            {% elseif form.navigator.finish is defined %}
+                {{ form_widget(form.navigator.finish, {'label': 'Recevoir mon devis', 'attr': {'class': 'inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold text-white bg-accent hover:bg-gray-900 border border-accent hover:border-gray-900 transition cursor-pointer ml-auto'}}) }}
+            {% endif %}
+        </div>
+
+        <p class="text-center text-[11px] text-gray-400 leading-relaxed">Vos données ne sont jamais revendues. Devis gratuit, sans engagement.</p>
+    {{ form_end(form) }}
+</div>

@@ -1,0 +1,16 @@
+<h2 style="color:#16a34a;font-family:Arial,sans-serif;">Nouvelle demande de devis</h2>
+<p>{{ quote.createdAt|format_datetime('full', 'short', locale='fr') }}</p>
+
+<h3 style="font-family:Arial,sans-serif;margin-top:24px;">Besoin</h3>
+<p><strong>Service :</strong> {{ quote.serviceType|default('—')|capitalize }}</p>
+<p><strong>Type de bien :</strong> {{ quote.propertyType|default('—')|replace({'_': ' '})|capitalize }}</p>
+<p><strong>Ville :</strong> {{ quote.city }} ({{ quote.zipCode }})</p>
+
+<h3 style="font-family:Arial,sans-serif;margin-top:24px;">Coordonnées</h3>
+<p><strong>Nom / Prénom :</strong> {{ quote.firstName }} {{ quote.lastName }}</p>
+<p><strong>Email :</strong> <a href="mailto:{{ quote.email }}">{{ quote.email }}</a></p>
+<p><strong>Téléphone :</strong> <a href="tel:{{ quote.phoneNumber }}">{{ quote.phoneNumber }}</a></p>
+{% if quote.message %}<p><strong>Message :</strong><br>{{ quote.message|nl2br }}</p>{% endif %}
+
+<hr>
+<small style="color:#6b7280;">Demande de devis express envoyée depuis le formulaire de la home.</small>

@@ -21,6 +21,12 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Contact/Entity'
                 prefix: 'App\Contact\Entity'
                 alias: Contact
+            Quote:
+                type: attribute
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/Quote/Entity'
+                prefix: 'App\Quote\Entity'
+                alias: Quote
             Security:
                 type: attribute
                 is_bundle: false

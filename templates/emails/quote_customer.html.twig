@@ -1,0 +1,26 @@
+<div style="font-family:Arial,sans-serif;color:#111828;max-width:560px;">
+    <h2 style="color:#111828;">Bonjour {{ quote.firstName }},</h2>
+
+    <p>Nous avons bien reçu votre demande de devis pour une intervention de <strong>{{ quote.serviceType|default('')|capitalize }}</strong> à <strong>{{ quote.city }}</strong>.</p>
+
+    <p>Notre équipe revient vers vous sous <strong>24 heures</strong> avec une proposition détaillée et personnalisée. Aucun acompte ne vous sera demandé avant l'intervention.</p>
+
+    <h3 style="margin-top:24px;">Récapitulatif de votre demande</h3>
+    <ul style="line-height:1.7;">
+        <li><strong>Service :</strong> {{ quote.serviceType|default('—')|capitalize }}</li>
+        <li><strong>Type de bien :</strong> {{ quote.propertyType|default('—')|replace({'_': ' '})|capitalize }}</li>
+        <li><strong>Ville d'intervention :</strong> {{ quote.city }} ({{ quote.zipCode }})</li>
+        {% if quote.message %}<li><strong>Précisions :</strong> {{ quote.message }}</li>{% endif %}
+    </ul>
+
+    <p style="margin-top:24px;">Une question urgente ? Contactez-nous directement :</p>
+    <ul style="line-height:1.7;">
+        <li>France : <a href="tel:+33641288848">+33 6 41 28 88 48</a></li>
+        <li>Suisse : <a href="tel:+41763044227">+41 76 304 42 27</a></li>
+    </ul>
+
+    <p style="margin-top:32px;">À très vite,<br>L'équipe ESP Débarras et Nettoyage Rhône-Alpes</p>
+
+    <hr style="margin-top:32px;border:none;border-top:1px solid #e5e7eb;">
+    <small style="color:#6b7280;">Cet email confirme la réception de votre demande. Vous n'avez rien à faire de plus.</small>
+</div>

@@ -1,0 +1,6 @@
+framework:
+    rate_limiter:
+        quote_flow:
+            policy: 'sliding_window'
+            limit: 1
+            interval: '5 minutes'

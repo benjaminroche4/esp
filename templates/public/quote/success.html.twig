@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Demande de devis envoyée - ESP Rhône-Alpes{% endblock %}
+{% block description %}Votre demande de devis a bien été reçue. Notre équipe ESP revient vers vous sous 24 heures.{% endblock %}
+{% block url %}{{ path('app_quote_success') }}{% endblock %}
+
+{% block robots %}noindex, nofollow{% endblock %}
+
+{% block body %}
+    <section class="bg-white px-6 py-24 sm:py-32 lg:px-8">
+        <div class="mx-auto max-w-2xl text-center">
+            <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
+                {{ ux_icon('pepicons-print:checkmark-circle', {class: 'w-auto h-10 text-green-600'}) }}
+            </div>
+            <h1 class="mt-8 text-balance text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">Demande bien reçue&nbsp;!</h1>
+            <p class="mt-6 text-lg/8 text-gray-600">Merci pour votre confiance. Notre équipe ESP revient vers vous dans <strong>les 24 heures</strong> avec un devis détaillé et personnalisé.</p>
+            <p class="mt-4 text-base text-gray-600">Un email de confirmation vient de vous être envoyé. Pensez à vérifier vos spams si vous ne le trouvez pas.</p>
+
+            <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 max-w-xl mx-auto gap-x-5 gap-y-5">
+                <div class="flex items-center justify-center flex-col bg-gray-900 p-5 shadow-sm space-y-2 rounded-lg">
+                    <p class="text-white text-sm font-semibold">Une question urgente ?</p>
+                    <div class="flex items-center justify-center gap-x-2.5">
+                        {{ ux_icon('twemoji:flag-for-flag-france', {class: 'size-5'}) }}
+                        <a href="tel:+33641288848" class="text-white font-medium text-sm">+33 6 41 28 88 48</a>
+                    </div>
+                    <div class="flex items-center justify-center gap-x-2.5">
+                        {{ ux_icon('twemoji:flag-for-flag-switzerland', {class: 'size-5'}) }}
+                        <a href="tel:+41763044227" class="text-white font-medium text-sm">+41 76 304 42 27</a>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center bg-gray-50 p-5 shadow-sm rounded-lg ring-1 ring-gray-200">
+                    <p class="text-gray-900 text-sm font-semibold">En attendant…</p>
+                    <a href="{{ path('app_home') }}#services" class="mt-3 text-sm font-semibold text-white bg-gray-900 px-4 py-2 rounded-full border border-gray-900 hover:bg-white hover:text-gray-900 transition duration-100">Découvrir nos services</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <twig:Section:CtaFooter />
+{% endblock %}
