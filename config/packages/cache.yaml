@@ -1,14 +1,5 @@
 framework:
     cache:
-        # Stable namespace across deploys (so APCu / shared caches don't collide
+        # Stable namespace across deploys (so shared caches don't collide
         # with siblings or other apps on the same FPM pool).
         prefix_seed: esp/app
-
-when@prod:
-    framework:
-        cache:
-            # APCu stores cache in shared memory: ~10× faster than the default
-            # filesystem adapter. REQUIRES the apcu extension on prod PHP-FPM
-            # (`apcu.enable=1` and `apcu.enable_cli=1` in php.ini).
-            app: cache.adapter.apcu
-            system: cache.adapter.apcu
