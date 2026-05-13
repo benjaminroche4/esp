@@ -1,84 +1,78 @@
-.DEFAULT_GOAL := help
-PHP ?= php
-CONSOLE = $(PHP) bin/console
+hello:
+	echo "Hello World"
 
-.PHONY: help start css css-watch importmap clear lint test phpstan cs-fix cs-check qa prod-build prod-cache-warm prod-cache-clear
-
-help: ## Show this help
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-18s\033[0m %s\n", $$1, $$2}'
-
-# ───── Dev ─────────────────────────────────────────────────────────────────────
-
-start: ## Start Symfony local server
+start:
 	symfony server:start --no-tls
 
-css: ## Build Tailwind once (minified)
-	$(CONSOLE) tailwind:build --minify
+clean:
+	php bin/console cache:clear
 
-css-watch: ## Watch + rebuild Tailwind on change
-	$(CONSOLE) tailwind:build --watch
+warm:
+	php bin/console cache:warmup --env=prod
 
-importmap: ## Install/refresh JS deps into assets/vendor/
-	$(CONSOLE) importmap:install
+deploy:
+	echo "→ Pull Git (main)" && git pull --ff-only origin main
+	echo "→ Install dependencies (prod)" && php composer.phar install --no-dev --optimize-autoloader
+	echo "→ Running database migrations" && php bin/console doctrine:migrations:migrate --env=prod --no-interaction
+	echo "→ Compile AssetMapper" && php bin/console asset-map:compile --env=prod
+	echo "→ Clear cache (prod)" && php bin/console cache:clear --env=prod
+	echo "✓ Cache warmup (prod, compiles all Twig templates ahead of first request)" && php bin/console cache:warmup --env=prod
+	echo "✓ Déploiement terminé"
 
-clear: ## Clear cache (dev)
-	$(CONSOLE) cache:clear
+version:
+	echo "→ Symfony Version"
+	php bin/console --version
+	echo "→ Symfony CLI Version"
+	symfony -v
+	echo "→ PHP Version"
+	php -v
 
-# ───── QA ──────────────────────────────────────────────────────────────────────
-
-lint: ## Lint container, twig and yaml
-	$(CONSOLE) lint:container
-	$(CONSOLE) lint:twig templates/
-	$(CONSOLE) lint:yaml config/
-
-test: ## Run PHPUnit suite
-	vendor/bin/phpunit
-
-phpstan: ## Run PHPStan static analysis
+lint:
+	php bin/console lint:twig templates/
+	php bin/console lint:yaml config/ --parse-tags
+	php bin/console lint:container
 	vendor/bin/phpstan analyse --memory-limit=1G
-
-cs-fix: ## Auto-fix code style
-	vendor/bin/php-cs-fixer fix
-
-cs-check: ## Check code style (dry-run)
 	vendor/bin/php-cs-fixer fix --dry-run --diff
 
-qa: lint cs-check phpstan test ## Run full QA suite
+cs-fix:
+	vendor/bin/php-cs-fixer fix
 
-# ───── Prod ────────────────────────────────────────────────────────────────────
+test:
+	php bin/phpunit
 
-prod-build: ## Optimised composer install + warmup for prod deploy
-	composer install --no-dev --optimize-autoloader --classmap-authoritative --apcu-autoloader --no-interaction
-	APP_ENV=prod APP_DEBUG=0 $(CONSOLE) cache:clear
-	APP_ENV=prod APP_DEBUG=0 $(CONSOLE) cache:warmup
-	APP_ENV=prod APP_DEBUG=0 $(CONSOLE) tailwind:build --minify
-	APP_ENV=prod APP_DEBUG=0 $(CONSOLE) importmap:install
-	APP_ENV=prod APP_DEBUG=0 $(CONSOLE) asset-map:compile
+test-prod:
+	@echo "→ [1/6] Lint Twig"
+	@php bin/console lint:twig templates/
+	@echo "→ [2/6] Lint YAML"
+	@php bin/console lint:yaml config/ --parse-tags
+	@echo "→ [3/6] Lint container (DI types)"
+	@php bin/console lint:container
+	@echo "→ [4/6] PHPStan (niveau 5, baseline appliqué)"
+	@vendor/bin/phpstan analyse --memory-limit=1G
+	@echo "→ [5/6] PHP-CS-Fixer (dry-run, formatage Symfony + PHP82)"
+	@vendor/bin/php-cs-fixer fix --dry-run --diff
+	@echo "→ [6/6] PHPUnit"
+	@php bin/phpunit
+	@echo "✓ Pre-prod OK : tu peux deployer avec 'make deploy'"
 
-prod-cache-clear: ## Clear all prod caches (HTTP cache + app cache)
-	rm -rf var/cache/prod
-	APP_ENV=prod APP_DEBUG=0 $(CONSOLE) cache:clear
-	APP_ENV=prod APP_DEBUG=0 $(CONSOLE) cache:pool:clear cache.app cache.system 2>/dev/null || true
+test-db-init:
+	echo "→ Create rip_test database (no-op if it already exists)"
+	php bin/console doctrine:database:create --env=test --if-not-exists
+	echo "→ Apply all migrations to rip_test"
+	php bin/console doctrine:migrations:migrate --env=test --no-interaction
+	echo "✓ Test DB ready. Run 'make test' to execute the suite."
 
-# ───── Production PHP-FPM tuning (php.ini snippet to copy on the server) ──────
-#
-# [opcache]
-# opcache.enable=1
-# opcache.enable_cli=0
-# opcache.memory_consumption=256
-# opcache.max_accelerated_files=20000
-# opcache.validate_timestamps=0          ; disable in prod, force re-deploy to invalidate
-# opcache.preload=/var/www/esp/config/preload.php
-# opcache.preload_user=www-data
-# opcache.jit=tracing
-# opcache.jit_buffer_size=128M
-#
-# [apcu]
-# apcu.enable=1
-# apcu.enable_cli=1
-# apcu.shm_size=64M
-# apcu.ttl=3600
-#
-# [realpath_cache]
-# realpath_cache_size=4096K
-# realpath_cache_ttl=600
+test-db-reset:
+	echo "→ Drop rip_test"
+	php bin/console doctrine:database:drop --env=test --force --if-exists
+	$(MAKE) test-db-init
+
+tailwind:
+	@mkdir -p ~/tmp
+	@chmod 700 ~/tmp
+	@export TMPDIR=~/tmp && export TEMP=~/tmp && export TMP=~/tmp && \
+	php bin/console tailwind:build --minify
+	php bin/console asset-map:compile
+	php bin/console cache:clear
+	php bin/console cache:warmup --env=prod
+	echo "→ Tailwind CSS build complete. Do not forget : chmod 711 . (Source)"
