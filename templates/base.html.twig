@@ -25,103 +25,11 @@
         <link rel="apple-touch-icon" href="{{ asset('medias/favicon.ico') }}">
         <link rel="manifest" href="{{ asset('manifest.webmanifest') }}">
 
-        <link rel="preload" as="font" type="font/woff2" href="{{ asset('fonts/montserrat-v31-latin_latin-ext-regular.woff2') }}" crossorigin>
-        <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-
-        {# --- Open Graph --- #}
-        <meta property="og:type" content="{% block ogType %}website{% endblock %}">
-        <meta property="og:site_name" content="ESP Débarras et Nettoyage">
-        <meta property="og:locale" content="{% block og_locale %}fr_FR{% endblock %}">
-        {% block og_locale_alternate %}<meta property="og:locale:alternate" content="fr_CH">{% endblock %}
-        <meta property="og:title" content="{% block ogTitle %}{{ block('title') }}{% endblock %}">
-        <meta property="og:url" content="{% block ogUrl %}https://esp-rhone-alpes.fr{{ block('url') }}{% endblock %}">
-        <meta property="og:image" content="{% block ogImage %}{{ asset('medias/site/banniere.webp') }}{% endblock %}">
-        <meta property="og:image:alt" content="{% block ogImageAlt %}ESP Débarras et Nettoyage Rhône-Alpes{% endblock %}"/>
-        <meta property="og:description" content="{% block ogDescription %}{{ block('description') }}{% endblock %}">
-
-        {# --- Twitter Card --- #}
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="{{ block('ogTitle') }}">
-        <meta name="twitter:description" content="{{ block('ogDescription') }}">
-        <meta name="twitter:image" content="{{ block('ogImage') }}">
-        <meta name="twitter:image:alt" content="{{ block('ogImageAlt') }}">
-
         {% block stylesheets %}{% endblock %}
 
         {% block javascripts %}
             {% block importmap %}{{ importmap('app', { 'data-turbo-track': 'reload', nonce: csp_nonce() }) }}{% endblock %}
-
-            {# Google Tag Manager (nonced for CSP) #}
-            <script nonce="{{ csp_nonce() }}">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                    'https://www.googletagmanager.com/gtm.js?id='+i+dl+'&gtm_nonce='+'{{ csp_nonce() }}';j.setAttribute('nonce','{{ csp_nonce() }}');f.parentNode.insertBefore(j,f);
-                })(window,document,'script','dataLayer','GTM-MK5L23Q9');</script>
         {% endblock %}
-
-        {# --- Schema.org : LocalBusiness avec note agrégée pour rich snippets --- #}
-        <script type="application/ld+json" nonce="{{ csp_nonce() }}">
-        {
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "@id": "https://esp-rhone-alpes.fr/#organization",
-            "name": "ESP Débarras et Nettoyage",
-            "alternateName": "ESP Rhône-Alpes",
-            "url": "https://esp-rhone-alpes.fr",
-            "logo": "https://esp-rhone-alpes.fr{{ asset('medias/logo/esp-debarras-nettoyage-rhone-alpes-logo-header.svg') }}",
-            "image": "https://esp-rhone-alpes.fr{{ asset('medias/site/banniere.webp') }}",
-            "description": "Entreprise spécialisée dans le débarras, le nettoyage et la gestion du syndrome de Diogène en Rhône-Alpes et Suisse.",
-            "telephone": "+33641288848",
-            "email": "contact@esp-rhone-alpes.fr",
-            "priceRange": "€€",
-            "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "22 Imp. des Ecorees",
-                "postalCode": "74150",
-                "addressLocality": "Sales",
-                "addressRegion": "Auvergne-Rhône-Alpes",
-                "addressCountry": "FR"
-            },
-            "areaServed": [
-                { "@type": "AdministrativeArea", "name": "Auvergne-Rhône-Alpes" },
-                { "@type": "City", "name": "Lyon" },
-                { "@type": "City", "name": "Grenoble" },
-                { "@type": "City", "name": "Annecy" },
-                { "@type": "City", "name": "Chambéry" },
-                { "@type": "City", "name": "Valence" }
-            ],
-            "openingHoursSpecification": [{
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-                "opens": "07:00",
-                "closes": "18:30"
-            }],
-            "sameAs": [
-                "https://www.facebook.com/Espdebarrasnettoyagerhonealpes/",
-                "https://www.instagram.com/esp_debarras_rhone_alpes/"
-            ],
-            "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": "4.7",
-                "reviewCount": "150",
-                "bestRating": "5",
-                "worstRating": "1"
-            }
-        }
-        </script>
-
-        <script type="application/ld+json" nonce="{{ csp_nonce() }}">
-        {
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": "ESP Débarras et Nettoyage",
-            "url": "https://esp-rhone-alpes.fr",
-            "inLanguage": "fr-FR"
-        }
-        </script>
-
-        {% block schema %}{% endblock %}
     </head>
     <body>
         <!-- Google Tag Manager (noscript) -->
