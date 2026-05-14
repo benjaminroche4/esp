@@ -5,8 +5,7 @@
     { route: 'app_blog',                 label: 'Blog',              prefix: true }
 ] %}
 
-<div data-controller="header">
-
+<div>
     <header class="border-b border-gray-200 bg-white">
         <nav class="mx-auto flex max-w-7xl items-center justify-between gap-x-4 px-4 py-4 lg:px-8 lg:py-5"
              aria-label="Navigation principale">
@@ -42,39 +41,33 @@
                     Devis gratuit
                 </twig:Button>
 
-                {# Mobile hamburger #}
-                <twig:Button variant="ghost" size="icon-lg"
-                             class="lg:hidden"
-                             data-action="header#open"
-                             data-header-target="toggle"
-                             aria-controls="header-menu"
-                             aria-expanded="false">
-                    <span class="sr-only">Ouvrir le menu</span>
+                {# Mobile hamburger — invoker command natif HTML, ouvre <dialog> via showModal() #}
+                <button type="button"
+                        command="show-modal" commandfor="header-menu"
+                        aria-label="Ouvrir le menu"
+                        aria-controls="header-menu"
+                        class="lg:hidden inline-flex items-center justify-center size-9 rounded-lg cursor-pointer text-foreground hover:bg-muted transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring">
                     <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
                     </svg>
-                </twig:Button>
+                </button>
             </div>
         </nav>
     </header>
 
-    {# Mobile menu — sibling of <header> pour éviter de créer un stacking context. #}
-    <div id="header-menu"
-         class="hidden fixed inset-0 z-50 lg:hidden"
-         data-header-target="panel"
-         role="dialog"
-         aria-modal="true"
-         aria-label="Menu de navigation">
+    {# Mobile menu — <dialog> natif, ouvert/fermé via les commandes HTML invoker. #}
+    <dialog id="header-menu"
+            class="header-menu lg:hidden"
+            aria-label="Menu de navigation">
 
-        {# Backdrop #}
-        <div class="absolute inset-0 bg-gray-900/50 opacity-0 transition-opacity duration-200 ease-out"
-             data-header-target="backdrop"
-             data-action="click->header#close"
-             aria-hidden="true"></div>
+        {# Backdrop cliquable — full-screen, sous le panel, ferme la dialog #}
+        <button type="button"
+                command="close" commandfor="header-menu"
+                aria-label="Fermer le menu"
+                class="header-menu-backdrop fixed inset-0 size-full cursor-default"></button>
 
-        {# Panel — slides in from the right #}
-        <div class="absolute inset-y-0 right-0 flex w-full max-w-sm translate-x-full flex-col bg-white shadow-xl transition-transform duration-300 ease-out"
-             data-header-target="drawer">
+        {# Panel — slides in from the right, au-dessus du backdrop #}
+        <div class="header-menu-panel fixed inset-y-0 right-0 z-10 flex w-full max-w-sm flex-col bg-white shadow-xl">
             <div class="flex items-center justify-between gap-x-4 px-6 py-4 border-b border-gray-100">
                 <a href="{{ path('app_home') }}" class="flex items-center -m-1.5 p-1.5"
                    aria-label="Accueil">
@@ -83,14 +76,14 @@
                          alt="" width="120" height="32">
                     <span class="sr-only">ESP Débarras et Nettoyage</span>
                 </a>
-                <twig:Button variant="ghost" size="icon-lg"
-                             data-action="header#close"
-                             data-header-target="closeButton">
-                    <span class="sr-only">Fermer le menu</span>
+                <button type="button"
+                        command="close" commandfor="header-menu"
+                        aria-label="Fermer le menu"
+                        class="inline-flex items-center justify-center size-9 rounded-lg cursor-pointer text-foreground hover:bg-muted transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring">
                     <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
                     </svg>
-                </twig:Button>
+                </button>
             </div>
 
             <div class="flex-1 overflow-y-auto px-6 pt-4 pb-6">
@@ -100,7 +93,6 @@
                         <li>
                             <a href="{{ path(item.route) }}"
                                class="block rounded-lg px-3 py-2.5 text-gray-900 hover:bg-accent/10 hover:text-accent aria-[current=page]:bg-accent/10 aria-[current=page]:text-accent aria-[current=page]:font-semibold"
-                               data-action="header#close"
                                {% if is_current %}aria-current="page"{% endif %}>
                                 {{ item.label }}
                             </a>
@@ -110,8 +102,7 @@
 
                 <div class="mt-6">
                     <twig:Button as="a" href="{{ path('app_contact') }}" size="lg"
-                                 class="w-full h-12 text-base"
-                                 data-action="header#close">
+                                 class="w-full h-12 text-base">
                         Devis gratuit
                     </twig:Button>
                 </div>
@@ -138,5 +129,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </dialog>
 </div>

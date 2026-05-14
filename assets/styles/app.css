@@ -114,3 +114,46 @@ html {
     display: none;
   }
 }
+
+/* Mobile menu — <dialog> natif ouvert/fermé via les commandes HTML invoker
+   (command="show-modal"/"close"). Pas de JS applicatif. */
+.header-menu {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  background: transparent;
+  border: none;
+  overflow: visible;
+  transition: display 300ms allow-discrete, overlay 300ms allow-discrete;
+}
+
+/* Backdrop natif du <dialog> en modal — fade in/out */
+.header-menu::backdrop {
+  background-color: rgb(17 24 39 / 0);
+  transition: background-color 200ms ease-out, display 200ms allow-discrete, overlay 200ms allow-discrete;
+}
+.header-menu[open]::backdrop {
+  background-color: rgb(17 24 39 / 0.5);
+}
+@starting-style {
+  .header-menu[open]::backdrop {
+    background-color: rgb(17 24 39 / 0);
+  }
+}
+
+/* Slide-in depuis la droite du panel */
+.header-menu-panel {
+  transform: translateX(100%);
+  transition: transform 300ms ease-out;
+}
+.header-menu[open] .header-menu-panel {
+  transform: translateX(0);
+}
+@starting-style {
+  .header-menu[open] .header-menu-panel {
+    transform: translateX(100%);
+  }
+}
